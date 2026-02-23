@@ -1,1 +1,58 @@
-{"2026-02-23": {"category": "example-category", "files": []}}
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2026-02-23",
+    "total_pdfs": 0,
+    "categories": [
+      "market-analysis",
+      "trading-strategies",
+      "risk-management",
+      "quantitative-methods",
+      "technical-analysis",
+      "fundamental-analysis",
+      "portfolio-construction",
+      "tools-guides"
+    ]
+  },
+  "by_date": {
+    "2026": {
+      "02": {
+        "23": []
+      }
+    }
+  },
+  "by_category": {
+    "market-analysis": {
+      "description": "Market analysis and economic research",
+      "files": []
+    },
+    "trading-strategies": {
+      "description": "Trading strategies and methodology",
+      "files": []
+    },
+    "risk-management": {
+      "description": "Risk management and portfolio protection",
+      "files": []
+    },
+    "quantitative-methods": {
+      "description": "Quantitative analysis and statistical methods",
+      "files": []
+    },
+    "technical-analysis": {
+      "description": "Technical analysis and chart patterns",
+      "files": []
+    },
+    "fundamental-analysis": {
+      "description": "Fundamental analysis and company research",
+      "files": []
+    },
+    "portfolio-construction": {
+      "description": "Portfolio construction and asset allocation",
+      "files": []
+    },
+    "tools-guides": {
+      "description": "Tools guides and educational resources",
+      "files": []
+    }
+  }
+}
