@@ -52,7 +52,13 @@ class Algo:
         for sig in (signal.SIGINT, signal.SIGTERM):
             asyncio.get_event_loop().add_signal_handler(sig, self._handle_signal)
 
-        log.info("Starting BTC hourly algo (env=%s)", config.kalshi.env)
+        mode = "DRY RUN (no real orders)" if config.kalshi.dry_run else "LIVE TRADING"
+        log.info("Starting BTC hourly algo — %s", mode)
+        if config.kalshi.dry_run:
+            log.info(
+                "Dry-run mode: reading real Kalshi prices, simulating $%.0f bankroll",
+                config.kalshi.simulated_balance,
+            )
 
         # Start BTC feed in background
         feed_task = asyncio.create_task(self._feed.run(), name="btc-feed")
@@ -68,10 +74,14 @@ class Algo:
         log.info("BTC spot price: %.2f", self._feed.current_price)
 
         async with KalshiClient() as kalshi:
-            balance = await kalshi.get_balance()
+            if config.kalshi.dry_run:
+                balance = config.kalshi.simulated_balance
+                log.info("Simulated starting balance: $%.2f", balance)
+            else:
+                balance = await kalshi.get_balance()
+                log.info("Kalshi balance: $%.2f", balance)
             self._risk.initialize(balance)
             self._tracker.log_balance(balance)
-            log.info("Kalshi balance: $%.2f", balance)
 
             orders = OrderManager(kalshi, self._tracker, self._risk)
 
@@ -85,7 +95,8 @@ class Algo:
                 loop_start = time.monotonic()
                 try:
                     await self._tick(kalshi, orders, balance)
-                    balance = await kalshi.get_balance()
+                    if not config.kalshi.dry_run:
+                        balance = await kalshi.get_balance()
                     self._risk.update_balance(balance)
                     self._tracker.log_balance(balance)
                 except Exception as exc:

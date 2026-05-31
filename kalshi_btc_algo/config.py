@@ -24,13 +24,16 @@ def _env_int(key: str, default: int) -> int:
 class KalshiConfig:
     email: str = field(default_factory=lambda: _env("KALSHI_EMAIL", ""))
     password: str = field(default_factory=lambda: _env("KALSHI_PASSWORD", ""))
-    env: str = field(default_factory=lambda: _env("KALSHI_ENV", "demo"))
+    # dry_run=True: reads real market data but never places orders
+    dry_run: bool = field(default_factory=lambda: _env("DRY_RUN", "true").lower() != "false")
+    # Starting balance to simulate in dry-run mode
+    simulated_balance: float = field(
+        default_factory=lambda: _env_float("SIMULATED_BALANCE", 10000.0)
+    )
 
     @property
     def base_url(self) -> str:
-        if self.env == "prod":
-            return "https://trading-api.kalshi.com/trade-api/v2"
-        return "https://demo-api.kalshi.co/trade-api/v2"
+        return "https://trading-api.kalshi.com/trade-api/v2"
 
 
 @dataclass

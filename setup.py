@@ -52,26 +52,35 @@ def main():
         sys.exit(1)
 
     print()
-    print("Environment:")
-    print("  demo  — practice account, no real money (recommended to start)")
-    print("  prod  — live account, real money")
-    env = ask("Choose environment", default="demo")
-    if env not in ("demo", "prod"):
-        print("Invalid choice, defaulting to demo.")
-        env = "demo"
+    print("Mode:")
+    print("  dry   — watches real markets and logs what it would have traded,")
+    print("          but never places a real order. No money at risk.")
+    print("          (recommended to start — run for a few days to verify it works)")
+    print("  live  — places real orders with real money")
+    print()
+    mode = ask("Choose mode", default="dry")
+    if mode not in ("dry", "live"):
+        print("Invalid choice, defaulting to dry run.")
+        mode = "dry"
+    dry_run = mode == "dry"
+
+    sim_balance = "10000"
+    if dry_run:
+        sim_balance = ask("Simulated starting balance in dollars", default="10000")
 
     print()
     print("Risk settings (press Enter to keep the defaults):")
     min_prob = ask("Minimum probability to trade, e.g. 0.91 = 91%", default="0.91")
-    max_trade = ask("Max dollars per single trade", default="500")
-    daily_loss = ask("Daily loss limit % (stop trading if down this much), e.g. 0.05 = 5%", default="0.05")
+    daily_loss = ask("Daily loss limit % (stop if down this much), e.g. 0.05 = 5%", default="0.05")
 
     env_content = f"""# Kalshi credentials
 KALSHI_EMAIL={email}
 KALSHI_PASSWORD={password}
 
-# Environment: demo (practice) or prod (real money)
-KALSHI_ENV={env}
+# DRY_RUN=true  → reads real prices, logs simulated trades, never places orders
+# DRY_RUN=false → places real orders with real money
+DRY_RUN={"true" if dry_run else "false"}
+SIMULATED_BALANCE={sim_balance}
 
 # Risk settings
 MIN_TRUE_PROBABILITY={min_prob}
@@ -108,11 +117,13 @@ DRAWDOWN_LIMIT_PCT=0.10
     print("=" * 50)
     print("  Setup complete!")
     print()
-    if env == "demo":
-        print("  You are in DEMO mode (practice account).")
-        print("  No real money will be used.")
+    if dry_run:
+        print("  You are in DRY RUN mode.")
+        print("  The algo will watch real markets and log every trade it would")
+        print(f"  have made, starting from a simulated ${sim_balance} balance.")
+        print("  No real orders will be placed.")
     else:
-        print("  WARNING: You are in PROD mode (real money).")
+        print("  WARNING: You are in LIVE mode. Real orders will be placed.")
     print()
     print("  To start the algo, run:")
     print()
