@@ -65,8 +65,17 @@ def main():
     dry_run = mode == "dry"
 
     sim_balance = "10000"
+    max_per_trade = "25"
+
     if dry_run:
         sim_balance = ask("Simulated starting balance in dollars", default="10000")
+    else:
+        print()
+        print("Position sizing — how much real money per trade:")
+        print("  Kalshi contracts are $1 face value. At 91 cents each,")
+        print("  $25 buys about 27 contracts. Start small until you're confident.")
+        print()
+        max_per_trade = ask("Maximum dollars per single trade", default="25")
 
     print()
     print("Risk settings (press Enter to keep the defaults):")
@@ -89,6 +98,7 @@ MIN_EDGE=0.03
 MAX_OPEN_POSITIONS=5
 KELLY_FRACTION=0.25
 MAX_BANKROLL_PCT_PER_TRADE=0.02
+MAX_DOLLARS_PER_TRADE={max_per_trade}
 DAILY_LOSS_LIMIT_PCT={daily_loss}
 DRAWDOWN_LIMIT_PCT=0.10
 """
@@ -123,7 +133,9 @@ DRAWDOWN_LIMIT_PCT=0.10
         print(f"  have made, starting from a simulated ${sim_balance} balance.")
         print("  No real orders will be placed.")
     else:
-        print("  WARNING: You are in LIVE mode. Real orders will be placed.")
+        print(f"  LIVE mode — real orders up to ${max_per_trade} per trade.")
+        print("  Daily loss limit: stops automatically if down "
+              f"{float(daily_loss)*100:.0f}% on the day.")
     print()
     print("  To start the algo, run:")
     print()

@@ -73,7 +73,9 @@ class RiskConfig:
     # Minimum contracts to bother placing (Kalshi minimum is 1)
     min_contracts: int = 1
     # Hard cap per single trade in dollars regardless of Kelly
-    max_dollars_per_trade: float = 500.0
+    max_dollars_per_trade: float = field(
+        default_factory=lambda: _env_float("MAX_DOLLARS_PER_TRADE", 500.0)
+    )
 
 
 @dataclass
