@@ -114,7 +114,7 @@ class KalshiClient:
         Only returns markets that are still open for trading.
         """
         params = {
-            "event_ticker": config.signal.btc_event_ticker,
+            "series_ticker": config.signal.btc_series_ticker,
             "status": "open",
             "limit": 50,
         }

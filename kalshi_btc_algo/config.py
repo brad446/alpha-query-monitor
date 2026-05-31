@@ -46,8 +46,8 @@ class SignalConfig:
     min_edge: float = field(default_factory=lambda: _env_float("MIN_EDGE", 0.03))
     # Scan interval in seconds
     scan_interval_seconds: int = 30
-    # BTC hourly market event series ticker on Kalshi
-    btc_event_ticker: str = "KXBTC"
+    # BTC hourly market series ticker on Kalshi (confirmed: KXBTCD)
+    btc_series_ticker: str = "KXBTCD"
 
 
 @dataclass
