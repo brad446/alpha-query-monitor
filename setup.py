@@ -77,7 +77,7 @@ def main():
         sim_balance = ask("Simulated starting balance in dollars", default="10000")
     else:
         print()
-        print("Position sizing — how much real money per trade:")
+        print("Position sizing - how much real money per trade:")
         print("  Kalshi contracts are $1 face value. At 91 cents each,")
         print("  $25 buys about 27 contracts. Start small until you're confident.")
         print()
@@ -92,8 +92,8 @@ def main():
 KALSHI_EMAIL={email}
 KALSHI_PASSWORD={password}
 
-# DRY_RUN=true  → reads real prices, logs simulated trades, never places orders
-# DRY_RUN=false → places real orders with real money
+# DRY_RUN=true  = reads real prices, logs simulated trades, never places orders
+# DRY_RUN=false = places real orders with real money
 DRY_RUN={"true" if dry_run else "false"}
 SIMULATED_BALANCE={sim_balance}
 
@@ -109,7 +109,7 @@ DAILY_LOSS_LIMIT_PCT={daily_loss}
 DRAWDOWN_LIMIT_PCT=0.10
 """
 
-    with open(".env", "w") as f:
+    with open(".env", "w", encoding="utf-8") as f:
         f.write(env_content)
 
     print()
@@ -139,7 +139,7 @@ DRAWDOWN_LIMIT_PCT=0.10
         print(f"  have made, starting from a simulated ${sim_balance} balance.")
         print("  No real orders will be placed.")
     else:
-        print(f"  LIVE mode — real orders up to ${max_per_trade} per trade.")
+        print(f"  LIVE mode - real orders up to ${max_per_trade} per trade.")
         print("  Daily loss limit: stops automatically if down "
               f"{float(daily_loss)*100:.0f}% on the day.")
     print()
