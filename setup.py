@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """
-Interactive setup — run this once before starting the algo.
+Interactive setup - run this once before starting the algo.
 It will ask for your Kalshi credentials and write the config file.
 """
 import getpass
+import io
 import os
 import subprocess
 import sys
+
+# Fix Windows console encoding
+if sys.platform == "win32":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 
 def ask(prompt, default=None, secret=False):
@@ -26,7 +32,7 @@ def ask(prompt, default=None, secret=False):
 def main():
     print()
     print("=" * 50)
-    print("  BTC Hourly Kalshi Algo — First-Time Setup")
+    print("  BTC Hourly Kalshi Algo - First-Time Setup")
     print("=" * 50)
     print()
 
@@ -53,10 +59,10 @@ def main():
 
     print()
     print("Mode:")
-    print("  dry   — watches real markets and logs what it would have traded,")
+    print("  dry   - watches real markets and logs what it would have traded,")
     print("          but never places a real order. No money at risk.")
-    print("          (recommended to start — run for a few days to verify it works)")
-    print("  live  — places real orders with real money")
+    print("          (recommended to start - run for a few days to verify it works)")
+    print("  live  - places real orders with real money")
     print()
     mode = ask("Choose mode", default="dry")
     if mode not in ("dry", "live"):
@@ -107,7 +113,7 @@ DRAWDOWN_LIMIT_PCT=0.10
         f.write(env_content)
 
     print()
-    print("✓ Config saved to .env")
+    print("OK - Config saved to .env")
 
     # Install dependencies
     print()
@@ -118,7 +124,7 @@ DRAWDOWN_LIMIT_PCT=0.10
         text=True,
     )
     if result.returncode == 0:
-        print("✓ Packages installed")
+        print("OK - Packages installed")
     else:
         print("Warning: some packages may not have installed correctly.")
         print(result.stderr[:300])
