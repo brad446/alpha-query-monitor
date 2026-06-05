@@ -1,5 +1,6 @@
 from .handicapper import RaceAnalysis, HorseRating
 from .exotic_calculator import ExoticBet
+from .cross_race_exotics import CrossRaceBet
 
 W = 74  # line width
 
@@ -60,11 +61,12 @@ def _active_maxims(h: HorseRating) -> list[str]:
     return lines
 
 
-def format_horse(h: HorseRating, rank: int) -> str:
+def format_horse(h: HorseRating, rank: int, min_edge: float = 0.10) -> str:
     lines = []
     rank_tag = ">>>" if rank == 1 else f"#{rank:2d} "
+    is_value = h.bet["recommended"] and h.edge >= min_edge
     bet_str  = (f"WIN ${h.bet['bet_amount']:.0f}  (edge {h.edge*100:.0f}%)"
-                if h.bet["recommended"] else "No value bet")
+                if is_value else "No value bet")
 
     lines.append(
         f"\n  {rank_tag} PP{h.post:2d}  {h.name:<24s}"
@@ -129,7 +131,7 @@ def format_race(analysis: RaceAnalysis) -> str:
     lines.append(f"\n  Pace Scenario: {PACE_LABELS.get(analysis.pace_scenario_label, analysis.pace_scenario_label)}")
 
     for rank, horse in enumerate(analysis.horses, 1):
-        lines.append(format_horse(horse, rank))
+        lines.append(format_horse(horse, rank, min_edge=0.10))
 
     if analysis.value_picks:
         lines.append(f"\n  {'─'*W}")
@@ -147,8 +149,49 @@ def format_race(analysis: RaceAnalysis) -> str:
     return "\n".join(lines)
 
 
+def _format_ticket(t: CrossRaceBet) -> str:
+    legs_str = "  /  ".join(
+        f"R{leg.race_number} [{', '.join(leg.horses)}]" for leg in t.legs
+    )
+    return (
+        f"\n  [{t.ticket_label}]  {legs_str}\n"
+        f"    Model: {t.model_prob*100:.3f}%  |"
+        f"  Fair: {t.fair_value_odds:.0f}x  |"
+        f"  ML-implied: {t.ml_implied_odds:.0f}x  |"
+        f"  Edge: {t.edge_pct:.0f}%  |"
+        f"  {int(t.unit_cost)} combo(s) × ${t.suggested_bet/t.unit_cost:.0f}"
+        f"  =  Total ${t.suggested_bet:.0f}"
+    )
+
+
+def format_cross_race_tickets(tickets: list[CrossRaceBet]) -> str:
+    if not tickets:
+        return ""
+    lines = [
+        "\n" + "*" * W,
+        "  CROSS-RACE EXOTIC TICKETS (Pittsburgh Phil multi-race overlay method)",
+        "*" * W,
+    ]
+    # Group: Pick 3/4 first (longest legs = most edge), then Daily Double
+    order = ["Pick 3", "Pick 4", "Daily Double"]
+    grouped: dict[str, list[CrossRaceBet]] = {}
+    for t in tickets:
+        grouped.setdefault(t.bet_type, []).append(t)
+
+    for bet_type in order:
+        group = grouped.get(bet_type, [])
+        if not group:
+            continue
+        lines.append(f"\n  ── {bet_type} ──")
+        for t in sorted(group, key=lambda x: x.edge_pct, reverse=True):
+            lines.append(_format_ticket(t))
+
+    return "\n".join(lines)
+
+
 def format_card_report(card_meta: dict, analyses: list[RaceAnalysis],
-                       bankroll: float, dry_run: bool) -> str:
+                       bankroll: float, dry_run: bool,
+                       cross_tickets: list[CrossRaceBet] | None = None) -> str:
     rc = card_meta.get("race_card", card_meta)
     lines = [_bar(
         f"Pittsburgh Phil Model  —  {rc.get('track', 'Belmont Park')}  {rc.get('date', '')}",
@@ -168,6 +211,9 @@ def format_card_report(card_meta: dict, analyses: list[RaceAnalysis],
 
     for a in analyses:
         lines.append(format_race(a))
+
+    if cross_tickets:
+        lines.append(format_cross_race_tickets(cross_tickets))
 
     lines.append(_bar("End of Card  —  Good Luck", ch="-"))
     return "\n".join(lines)

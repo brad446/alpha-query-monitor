@@ -24,13 +24,32 @@ def implied_prob_from_odds(decimal_odds: float) -> float:
 def ml_to_decimal(morning_line: str) -> float:
     """
     Convert American morning line string ('5-2', '8-1', '3-5') to decimal odds.
+    Also handles '$X.XX' tote board format (e.g. '$6.40' = decimal 6.40).
     Decimal odds = net return per $1 bet + $1 stake.
     """
-    if "-" not in morning_line:
-        return float(morning_line) + 1.0
-    parts = morning_line.split("-")
+    s = morning_line.strip().lstrip("$")
+    # Tote board: bare decimal like "6.40" or "$6.40"
+    if "." in s and "-" not in s:
+        return float(s)
+    if "-" not in s:
+        return float(s) + 1.0
+    parts = s.split("-")
     num, den = float(parts[0]), float(parts[1])
     return (num / den) + 1.0
+
+
+def tote_to_decimal(tote_odds: str) -> float:
+    """
+    Parse live tote board odds to decimal.
+    Accepts: '5/2', '5-2', '8.00', '$8.00', '3-5', 'EVN', 'even'
+    """
+    s = tote_odds.strip().lstrip("$").lower()
+    if s in ("evn", "even", "e/v"):
+        return 2.0
+    if "/" in s:
+        parts = s.split("/")
+        return float(parts[0]) / float(parts[1]) + 1.0
+    return ml_to_decimal(tote_odds)
 
 
 def overlay_factor(model_prob: float, market_prob: float) -> float:
