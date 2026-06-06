@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pittsburgh Phil — 2026 Belmont Stakes Day Betting Card</title>
+<style>
+  :root {
+    --gold: #c9a227;
+    --gold-light: #e8c84a;
+    --navy: #0d1b2a;
+    --navy-mid: #1b2d44;
+    --navy-light: #243b55;
+    --green: #2e7d32;
+    --green-light: #4caf50;
+    --red: #c62828;
+    --red-light: #ef5350;
+    --white: #f5f0e8;
+    --gray: #b0bec5;
+    --ticket-bg: #fafaf5;
+    --ticket-border: #1b5e20;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.5;
+    font-size: 14px;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────── */
+  .masthead {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a3a5c 50%, #0d1b2a 100%);
+    border-bottom: 4px solid var(--gold);
+    padding: 24px 32px 20px;
+    text-align: center;
+    position: relative;
+  }
+  .masthead::before {
+    content: "🐎";
+    font-size: 40px;
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .masthead::after {
+    content: "🐎";
+    font-size: 40px;
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    transform: translateY(-50%) scaleX(-1);
+  }
+  .masthead h1 {
+    font-size: 28px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-style: italic;
+  }
+  .masthead h2 {
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin: 4px 0 8px;
+  }
+  .masthead .meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .masthead .meta-item {
+    text-align: center;
+  }
+  .masthead .meta-label {
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .masthead .meta-value {
+    font-size: 16px;
+    color: var(--gold-light);
+    font-weight: bold;
+  }
+
+  /* ── BANKROLL SUMMARY BAR ──────────────────────────── */
+  .bankroll-bar {
+    background: var(--navy-mid);
+    border-bottom: 2px solid var(--gold);
+    padding: 12px 32px;
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+  }
+  .br-segment {
+    flex: 1;
+    text-align: center;
+    padding: 8px 16px;
+    border-right: 1px solid rgba(201,162,39,0.3);
+  }
+  .br-segment:last-child { border-right: none; }
+  .br-label { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray); }
+  .br-amount { font-size: 20px; color: var(--gold); font-weight: bold; margin-top: 2px; }
+  .br-desc { font-size: 11px; color: var(--white); opacity: 0.75; }
+
+  /* ── MAIN CONTENT ──────────────────────────────────── */
+  .card-body {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 20px;
+  }
+
+  /* ── RACE SECTION ──────────────────────────────────── */
+  .race-section {
+    margin-bottom: 40px;
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .race-header {
+    background: linear-gradient(90deg, var(--navy-mid), var(--navy-light));
+    border-bottom: 2px solid var(--gold);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .race-number {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 22px;
+    font-weight: bold;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .race-title { flex: 1; }
+  .race-name { font-size: 20px; color: var(--gold); font-weight: bold; }
+  .race-sub { font-size: 13px; color: var(--white); opacity: 0.8; }
+  .race-budget {
+    text-align: right;
+  }
+  .budget-label { font-size: 10px; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+  .budget-amount { font-size: 24px; color: var(--gold-light); font-weight: bold; }
+
+  .race-body { padding: 16px 20px; }
+
+  /* ── PACE SCENARIO ─────────────────────────────────── */
+  .pace-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pace-hot { background: var(--red); color: white; }
+  .pace-slow { background: var(--green); color: white; }
+  .pace-normal { background: #455a64; color: white; }
+  .pace-contested { background: #e65100; color: white; }
+
+  /* ── HORSE TABLE ───────────────────────────────────── */
+  .horse-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+  .horse-table th {
+    background: rgba(201,162,39,0.15);
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 8px;
+    text-align: left;
+    border-bottom: 1px solid rgba(201,162,39,0.4);
+  }
+  .horse-table td {
+    padding: 8px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    vertical-align: middle;
+  }
+  .horse-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .horse-table .top-pick td { background: rgba(201,162,39,0.08); }
+
+  .rank-star { color: var(--gold); font-size: 16px; }
+  .rank-num { color: var(--gray); font-size: 12px; }
+
+  .horse-name { font-weight: bold; font-size: 14px; }
+  .horse-pp { color: var(--gray); font-size: 11px; }
+  .trainer-jockey { color: var(--gray); font-size: 11px; line-height: 1.3; }
+
+  .ml-odds { font-weight: bold; font-size: 14px; color: var(--white); }
+  .ml-high { color: #ff8a65; }    /* 15-1+ longshots */
+  .ml-mid { color: #fff176; }     /* 6-12-1 */
+  .ml-fav { color: var(--green-light); } /* 5-1 under */
+
+  .model-pct { font-weight: bold; color: var(--white); }
+  .edge-pct { font-weight: bold; }
+  .edge-pos { color: var(--green-light); }
+  .edge-neg { color: var(--red-light); }
+
+  .composite-bar {
+    width: 80px;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .composite-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 4px;
+  }
+
+  /* ── SIGNAL BADGES ─────────────────────────────────── */
+  .signals { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+  .badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .badge-bounce { background: rgba(198,40,40,0.25); border: 1px solid var(--red-light); color: var(--red-light); }
+  .badge-overlay { background: rgba(46,125,50,0.25); border: 1px solid var(--green-light); color: var(--green-light); }
+  .badge-trouble { background: rgba(230,115,0,0.25); border: 1px solid #ff8a65; color: #ff8a65; }
+  .badge-sol { background: rgba(63,81,181,0.25); border: 1px solid #7986cb; color: #7986cb; }
+  .badge-combo { background: rgba(201,162,39,0.2); border: 1px solid var(--gold); color: var(--gold); }
+  .badge-closer { background: rgba(100,100,100,0.2); border: 1px solid #90a4ae; color: #90a4ae; }
+  .badge-underlay { background: rgba(33,33,33,0.4); border: 1px solid #546e7a; color: #78909c; }
+  .badge-form { background: rgba(38,166,154,0.2); border: 1px solid #4db6ac; color: #4db6ac; }
+
+  .verdict-bet { color: var(--green-light); font-weight: bold; font-size: 13px; }
+  .verdict-pass { color: #546e7a; font-size: 12px; }
+
+  /* ── SECTION DIVIDERS ──────────────────────────────── */
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0 12px;
+  }
+  .section-head h3 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .section-head .line {
+    flex: 1;
+    height: 1px;
+    background: rgba(201,162,39,0.3);
+  }
+
+  /* ── BET TICKETS ───────────────────────────────────── */
+  .bet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .bet-ticket {
+    background: var(--ticket-bg);
+    border: 2px solid var(--ticket-border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    color: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+  }
+  .bet-ticket::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--ticket-border);
+  }
+  .ticket-type {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 4px;
+  }
+  .ticket-horses {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .ticket-amount {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--green);
+  }
+  .ticket-edge {
+    font-size: 11px;
+    color: #555;
+    margin-top: 2px;
+  }
+  .ticket-priority {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+  .priority-a { background: #c62828; color: white; }
+  .priority-b { background: #e65100; color: white; }
+  .priority-c { background: #1565c0; color: white; }
+
+  /* win ticket variant */
+  .bet-ticket.win-ticket { border-color: #1b5e20; }
+  .bet-ticket.win-ticket::before { background: #1b5e20; }
+  .bet-ticket.exacta-ticket { border-color: #0d47a1; }
+  .bet-ticket.exacta-ticket::before { background: #0d47a1; }
+  .bet-ticket.trifecta-ticket { border-color: #4a148c; }
+  .bet-ticket.trifecta-ticket::before { background: #4a148c; }
+  .bet-ticket.super-ticket { border-color: #880e4f; }
+  .bet-ticket.super-ticket::before { background: #880e4f; }
+  .bet-ticket.dd-ticket { border-color: #e65100; }
+  .bet-ticket.dd-ticket::before { background: #e65100; }
+  .bet-ticket.pick3-ticket { border-color: #827717; }
+  .bet-ticket.pick3-ticket::before { background: #827717; }
+
+  /* ── RACE BUDGET SUMMARY ───────────────────────────── */
+  .budget-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(201,162,39,0.08);
+    border: 1px solid rgba(201,162,39,0.25);
+    border-radius: 4px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .budget-breakdown {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+  .budget-item { color: var(--gray); }
+  .budget-item span { color: var(--white); font-weight: bold; }
+  .budget-total { font-size: 16px; font-weight: bold; color: var(--gold); }
+
+  /* ── CROSS-RACE SECTION ────────────────────────────── */
+  .xrace-section {
+    background: rgba(130,119,23,0.12);
+    border: 2px solid rgba(201,162,39,0.5);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+  }
+  .xrace-section h2 {
+    color: var(--gold);
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(201,162,39,0.3);
+    padding-bottom: 8px;
+  }
+  .xrace-ticket {
+    background: var(--ticket-bg);
+    border: 2px solid #827717;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+  }
+  .xrace-label { font-size: 11px; font-weight: bold; color: #555; letter-spacing: 1px; text-transform: uppercase; }
+  .xrace-legs { font-size: 14px; font-weight: bold; margin: 4px 0; }
+  .xrace-stats { font-size: 12px; color: #444; display: flex; gap: 16px; flex-wrap: wrap; }
+  .xrace-amount { font-size: 18px; font-weight: bold; color: var(--green); }
+
+  /* ── NON-STAKES SECTION ────────────────────────────── */
+  .nonstakes-section {
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,162,39,0.3);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 32px;
+  }
+  .nonstakes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .nonstakes-rule {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--gold);
+    padding: 10px 12px;
+    border-radius: 0 4px 4px 0;
+  }
+  .rule-title { font-size: 12px; font-weight: bold; color: var(--gold); text-transform: uppercase; letter-spacing: 0.5px; }
+  .rule-text { font-size: 12px; color: var(--white); opacity: 0.85; margin-top: 4px; }
+
+  /* ── TOTALS TABLE ──────────────────────────────────── */
+  .totals-section {
+    background: linear-gradient(135deg, #0d1b2a, #1a3a5c);
+    border: 2px solid var(--gold);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 32px;
+  }
+  .totals-section h2 { color: var(--gold); font-size: 18px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .totals-table { width: 100%; border-collapse: collapse; }
+  .totals-table th {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(201,162,39,0.4);
+    text-align: left;
+  }
+  .totals-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .totals-table .total-row td {
+    border-top: 2px solid var(--gold);
+    font-weight: bold;
+    font-size: 15px;
+    color: var(--gold);
+  }
+  .totals-table .subtotal-row td { color: var(--white); }
+  .totals-table .highlight { font-weight: bold; color: var(--gold-light); }
+
+  /* ── MAXIMS LEGEND ─────────────────────────────────── */
+  .maxims-legend {
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(201,162,39,0.2);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+  }
+  .maxims-legend h3 { color: var(--gold); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .maxims-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 4px 20px; }
+  .maxim-item { font-size: 11px; color: var(--gray); line-height: 1.4; }
+  .maxim-item span { color: var(--white); }
+
+  /* ── DISCLAIMER ────────────────────────────────────── */
+  .disclaimer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray);
+    border-top: 1px solid rgba(201,162,39,0.2);
+    padding-top: 16px;
+    margin-top: 8px;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* ── PRINT ─────────────────────────────────────────── */
+  @media print {
+    body { background: white; color: #1a1a1a; font-size: 12px; }
+    .masthead { background: white; border-bottom: 3px solid #c9a227; }
+    .masthead h1 { color: #c9a227; }
+    .masthead h2, .masthead .meta-value { color: #1a1a1a; }
+    .bankroll-bar { background: #f5f5f5; }
+    .br-amount { color: #c9a227; }
+    .race-section { border-color: #c9a227; }
+    .race-header { background: #f5f5f5; }
+    .race-name { color: #c9a227; }
+    .horse-table th { background: #f5f0e0; }
+    .section-head h3 { color: #c9a227; }
+    .bet-ticket { background: white; }
+    .xrace-section { background: #fffde7; }
+    .nonstakes-section { background: #f5f5f5; }
+    .totals-section { background: #f5f5f5; }
+    .totals-section h2, .totals-table th { color: #c9a227; }
+    .totals-table .total-row td, .totals-table .highlight { color: #c9a227; }
+    .badge-overlay { color: #2e7d32; border-color: #2e7d32; background: rgba(46,125,50,0.1); }
+    .badge-bounce { color: #c62828; border-color: #c62828; background: rgba(198,40,40,0.1); }
+    .verdict-bet { color: #2e7d32; }
+  }
+
+  @page { margin: 0.75in; size: letter; }
+</style>
+</head>
+<body>
+
+<!-- ── MASTHEAD ───────────────────────────────────────── -->
+<div class="masthead">
+  <h1>Pittsburgh Phil's Belmont Stakes Day</h1>
+  <h2>2026 Official Betting Card</h2>
+  <div class="meta">
+    <div class="meta-item">
+      <div class="meta-label">Track</div>
+      <div class="meta-value">Saratoga Race Course</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Date</div>
+      <div class="meta-value">Saturday, June 6, 2026</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Post Time</div>
+      <div class="meta-value">7:04 PM ET</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Total Bankroll</div>
+      <div class="meta-value">$3,500</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Model</div>
+      <div class="meta-value">Pittsburgh Phil v2</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BANKROLL BAR ───────────────────────────────────── -->
+<div class="bankroll-bar">
+  <div class="br-segment">
+    <div class="br-label">Belmont Stakes (G1)</div>
+    <div class="br-amount">$1,500</div>
+    <div class="br-desc">Race 11 — 12f Dirt</div>
+  </div>
+  <div class="br-segment">
+    <div class="br-label">Graded Stakes</div>
+    <div class="br-amount">$1,500</div>
+    <div class="br-desc">R7 Met Mile + R9 Woody Stephens</div>
+  </div>
+  <div class="br-segment">
+    <div class="br-label">Non-Stakes Card</div>
+    <div class="br-amount">$500</div>
+    <div class="br-desc">Races 1–6, 8, 10</div>
+  </div>
+  <div class="br-segment" style="background: rgba(201,162,39,0.08);">
+    <div class="br-label">Total Exposure</div>
+    <div class="br-amount" style="color: var(--gold-light); font-size: 26px;">$3,500</div>
+    <div class="br-desc">Kelly-sized across all wagers</div>
+  </div>
+</div>
+
+<!-- ── CARD BODY ──────────────────────────────────────── -->
+<div class="card-body">
+
+<!-- ═══════════════════════════════════════════════════════
+     RACE 11: 158TH BELMONT STAKES G1
+═══════════════════════════════════════════════════════ -->
+<div class="race-section">
+  <div class="race-header">
+    <div class="race-number">11</div>
+    <div class="race-title">
+      <div class="race-name">158th Belmont Stakes</div>
+      <div class="race-sub">G1 · 12 Furlongs (1½ Miles) · Dirt · $2,000,000 · Post ~7:04 PM ET</div>
+    </div>
+    <div class="race-budget">
+      <div class="budget-label">Budget</div>
+      <div class="budget-amount">$1,500</div>
+    </div>
+  </div>
+
+  <div class="race-body">
+    <span class="pace-badge pace-hot">🔥 HOT PACE — Four Pressers Chase Single Speed — Favors Closers at 12f</span>
+
+    <!-- HORSE TABLE -->
+    <table class="horse-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>PP</th>
+          <th>Horse</th>
+          <th>Trainer / Jockey</th>
+          <th>ML</th>
+          <th>Model%</th>
+          <th>Mkt%</th>
+          <th>Edge</th>
+          <th>Composite</th>
+          <th>Signals</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-num">#1</span></td>
+          <td>4</td>
+          <td><div class="horse-name">Renegade</div></td>
+          <td class="trainer-jockey">T. Pletcher<br>I. Ortiz Jr.</td>
+          <td><span class="ml-fav ml-odds">2-1</span></td>
+          <td class="model-pct">23.2%</td>
+          <td>25.9%</td>
+          <td class="edge-pct edge-neg">–10%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:93%"></div></div><br><span style="font-size:11px;color:var(--gray)">93.1</span></td>
+          <td><div class="signals">
+            <span class="badge badge-bounce">⚠ BOUNCE</span>
+            <span class="badge badge-trouble">TROUBLE</span>
+            <span class="badge badge-combo">SHARP COMBO</span>
+            <span class="badge badge-closer">CLOSER</span>
+          </div></td>
+          <td class="verdict-pass">Cover in exotics only</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#2</span></td>
+          <td>7</td>
+          <td><div class="horse-name">Commandment</div></td>
+          <td class="trainer-jockey">B. Cox<br>J. Velazquez</td>
+          <td><span class="ml-mid ml-odds">6-1</span></td>
+          <td class="model-pct">14.2%</td>
+          <td>11.1%</td>
+          <td class="edge-pct edge-pos">+28%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:73%"></div></div><br><span style="font-size:11px;color:var(--gray)">72.8</span></td>
+          <td><div class="signals">
+            <span class="badge badge-trouble">BUMPED DERBY</span>
+            <span class="badge badge-overlay">OVERLAY</span>
+            <span class="badge badge-combo">SHARP COMBO</span>
+          </div></td>
+          <td class="verdict-pass">Exotics + $50 WIN</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#3</span></td>
+          <td>3</td>
+          <td><div class="horse-name">Chief Wallabee</div></td>
+          <td class="trainer-jockey">B. Mott<br>J. Alvarado</td>
+          <td><span class="ml-fav ml-odds">3-1</span></td>
+          <td class="model-pct">12.2%</td>
+          <td>19.5%</td>
+          <td class="edge-pct edge-neg">–37%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:68%"></div></div><br><span style="font-size:11px;color:var(--gray)">67.5</span></td>
+          <td><div class="signals">
+            <span class="badge badge-underlay">PUBLIC UNDERLAY</span>
+          </div></td>
+          <td class="verdict-pass">PASS — overbet</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#4</span></td>
+          <td>9</td>
+          <td><div class="horse-name">Golden Tempo</div></td>
+          <td class="trainer-jockey">C. DeVaux<br>J. Ortiz</td>
+          <td><span class="ml-mid ml-odds">9-2</span></td>
+          <td class="model-pct">12.0%</td>
+          <td>14.1%</td>
+          <td class="edge-pct edge-neg">–15%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:67%"></div></div><br><span style="font-size:11px;color:var(--gray)">66.8</span></td>
+          <td><div class="signals">
+            <span class="badge badge-bounce">⚠ BOUNCE</span>
+            <span class="badge badge-form">IMPROVING</span>
+            <span class="badge badge-closer">CLOSER</span>
+          </div></td>
+          <td class="verdict-pass">FADE — peak bounce</td>
+        </tr>
+        <tr class="top-pick" style="border: 1px solid rgba(76,175,80,0.4);">
+          <td><span class="rank-star">★</span></td>
+          <td>6</td>
+          <td><div class="horse-name" style="color:#4caf50">Growth Equity</div>
+              <div style="font-size:10px;color:#4caf50;font-weight:bold">◀ TOP OVERLAY</div></td>
+          <td class="trainer-jockey">C. Brown<br>M. Franco</td>
+          <td><span class="ml-high ml-odds">12-1</span></td>
+          <td class="model-pct" style="color:#4caf50">11.7%</td>
+          <td>6.0%</td>
+          <td class="edge-pct edge-pos" style="font-size:15px">+95%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:66%"></div></div><br><span style="font-size:11px;color:var(--gray)">66.1</span></td>
+          <td><div class="signals">
+            <span class="badge badge-overlay" style="font-size:11px">+95% EDGE</span>
+            <span class="badge badge-combo">BROWN/FRANCO</span>
+            <span class="badge badge-form">IMPROVING</span>
+            <span class="badge badge-closer">CLOSER 12f</span>
+          </div></td>
+          <td class="verdict-bet">WIN $100 ✓</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#6</span></td>
+          <td>8</td>
+          <td><div class="horse-name">Emerging Market</div></td>
+          <td class="trainer-jockey">C. Brown<br>F. Prat</td>
+          <td><span class="ml-mid ml-odds">6-1</span></td>
+          <td class="model-pct">11.7%</td>
+          <td>11.1%</td>
+          <td class="edge-pct edge-pos">+5%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:66%"></div></div><br><span style="font-size:11px;color:var(--gray)">66.0</span></td>
+          <td><div class="signals">
+            <span class="badge badge-combo">BROWN/PRAT</span>
+          </div></td>
+          <td class="verdict-pass">Trifecta coverage</td>
+        </tr>
+        <tr class="top-pick" style="border: 1px solid rgba(76,175,80,0.4);">
+          <td><span class="rank-star">★</span></td>
+          <td>5</td>
+          <td><div class="horse-name" style="color:#4caf50">Ottinho</div>
+              <div style="font-size:10px;color:#4caf50;font-weight:bold">◀ DEEP OVERLAY</div></td>
+          <td class="trainer-jockey">C. Brown<br>D. Davis</td>
+          <td><span class="ml-high ml-odds">20-1</span></td>
+          <td class="model-pct" style="color:#4caf50">11.1%</td>
+          <td>3.7%</td>
+          <td class="edge-pct edge-pos" style="font-size:15px">+200%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:64%"></div></div><br><span style="font-size:11px;color:var(--gray)">64.4</span></td>
+          <td><div class="signals">
+            <span class="badge badge-overlay" style="font-size:11px">+200% EDGE</span>
+            <span class="badge badge-closer">CLOSER 12f</span>
+          </div></td>
+          <td class="verdict-bet">WIN $150 ✓</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#8</span></td>
+          <td>1</td>
+          <td><div class="horse-name">Vitruvian Man</div></td>
+          <td class="trainer-jockey">D. O'Neill<br>A. Fresu</td>
+          <td><span class="ml-high ml-odds">30-1</span></td>
+          <td class="model-pct">3.5%</td>
+          <td>2.5%</td>
+          <td class="edge-pct edge-pos">+38%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:36%"></div></div><br><span style="font-size:11px;color:var(--gray)">36.0</span></td>
+          <td><div class="signals">
+            <span class="badge badge-form">IMPROVING</span>
+          </div></td>
+          <td class="verdict-pass">PASS</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#9</span></td>
+          <td>2</td>
+          <td><div class="horse-name">Powershift</div></td>
+          <td class="trainer-jockey">T. Pletcher<br>L. Saez</td>
+          <td><span class="ml-high ml-odds">12-1</span></td>
+          <td class="model-pct">0.5%</td>
+          <td>6.0%</td>
+          <td class="edge-pct edge-neg">–92%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:14%"></div></div><br><span style="font-size:11px;color:var(--gray)">13.9</span></td>
+          <td><div class="signals">
+            <span class="badge badge-bounce">⚠ MAX BOUNCE</span>
+            <span class="badge badge-underlay">UNDERLAY</span>
+          </div></td>
+          <td class="verdict-pass">HARD PASS</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- WIN BETS -->
+    <div class="section-head"><div class="line"></div><h3>Win Bets</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket win-ticket">
+        <div class="ticket-priority priority-a">PRIMARY</div>
+        <div class="ticket-type">Win · Race 11</div>
+        <div class="ticket-horses">PP5 Ottinho<br><small style="color:#555;font-size:12px">20-1 ML · Gun Runner half-bro</small></div>
+        <div class="ticket-amount">$150</div>
+        <div class="ticket-edge">200% overlay · model 11.1% vs 3.7% mkt</div>
+      </div>
+      <div class="bet-ticket win-ticket">
+        <div class="ticket-priority priority-a">PRIMARY</div>
+        <div class="ticket-type">Win · Race 11</div>
+        <div class="ticket-horses">PP6 Growth Equity<br><small style="color:#555;font-size:12px">12-1 ML · Peter Pan winner</small></div>
+        <div class="ticket-amount">$100</div>
+        <div class="ticket-edge">95% overlay · model 11.7% vs 6.0% mkt</div>
+      </div>
+      <div class="bet-ticket win-ticket">
+        <div class="ticket-priority priority-b">BACKUP</div>
+        <div class="ticket-type">Win · Race 11</div>
+        <div class="ticket-horses">PP7 Commandment<br><small style="color:#555;font-size:12px">6-1 ML · Excused Derby trip</small></div>
+        <div class="ticket-amount">$50</div>
+        <div class="ticket-edge">28% overlay · M3 Trouble bonus</div>
+      </div>
+    </div>
+
+    <!-- EXACTA BETS -->
+    <div class="section-head"><div class="line"></div><h3>Exacta Bets</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Exacta · R11</div>
+        <div class="ticket-horses">PP6 → PP7<br><small style="color:#555">Growth Eq → Commandment</small></div>
+        <div class="ticket-amount">$100</div>
+        <div class="ticket-edge">Edge 165% · Fair 53x vs 141x ML</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Exacta · R11</div>
+        <div class="ticket-horses">PP7 → PP6<br><small style="color:#555">Commandment → Growth Eq</small></div>
+        <div class="ticket-amount">$100</div>
+        <div class="ticket-edge">Edge 158% · Fair 52x vs 133x ML</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-b">A</div>
+        <div class="ticket-type">Exacta · R11</div>
+        <div class="ticket-horses">PP5 → PP6<br><small style="color:#555">Ottinho → Growth Equity</small></div>
+        <div class="ticket-amount">$80</div>
+        <div class="ticket-edge">Deep overlay combo at 20-1 / 12-1</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-b">A</div>
+        <div class="ticket-type">Exacta · R11</div>
+        <div class="ticket-horses">PP6 → PP4<br><small style="color:#555">Growth Eq → Renegade</small></div>
+        <div class="ticket-amount">$70</div>
+        <div class="ticket-edge">Edge 86% · Fair 32x vs 60x ML</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-b">A</div>
+        <div class="ticket-type">Exacta · R11</div>
+        <div class="ticket-horses">PP5 → PP7<br><small style="color:#555">Ottinho → Commandment</small></div>
+        <div class="ticket-amount">$60</div>
+        <div class="ticket-edge">Ottinho bomb + trouble horse</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-c">B</div>
+        <div class="ticket-type">Exacta · R11</div>
+        <div class="ticket-horses">PP6 → PP9<br><small style="color:#555">Growth Eq → Golden Tempo</small></div>
+        <div class="ticket-amount">$40</div>
+        <div class="ticket-edge">Edge 76% · Closer showdown</div>
+      </div>
+    </div>
+    <!-- Exacta subtotal: 100+100+80+70+60+40 = $450 -->
+
+    <!-- TRIFECTA BETS -->
+    <div class="section-head"><div class="line"></div><h3>Trifecta Keys</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Trifecta · R11</div>
+        <div class="ticket-horses">PP4 → PP6 → PP7<br><small style="color:#555">Renegade → Gr.Eq → Commandment</small></div>
+        <div class="ticket-amount">$60</div>
+        <div class="ticket-edge">Edge 125% · Fair 130x vs 292x</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Trifecta · R11</div>
+        <div class="ticket-horses">PP4 → PP7 → PP6<br><small style="color:#555">Renegade → Commandment → GE</small></div>
+        <div class="ticket-amount">$60</div>
+        <div class="ticket-edge">Edge 116% · Fair 125x vs 270x</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-a">A</div>
+        <div class="ticket-type">Trifecta · R11</div>
+        <div class="ticket-horses">PP6 → PP4 → PP7<br><small style="color:#555">Growth Eq → Renegade → Cmd.</small></div>
+        <div class="ticket-amount">$55</div>
+        <div class="ticket-edge">Overlay on top with top model horses</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-a">A</div>
+        <div class="ticket-type">Trifecta · R11</div>
+        <div class="ticket-horses">PP6 → PP7 → PP4<br><small style="color:#555">Growth Eq → Commandment → Ren.</small></div>
+        <div class="ticket-amount">$55</div>
+        <div class="ticket-edge">Overlay wheel completing top 3</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-b">B+</div>
+        <div class="ticket-type">Trifecta · R11 (BOMB KEY)</div>
+        <div class="ticket-horses">PP5 → PP6 → PP4<br><small style="color:#555">Ottinho → Growth Eq → Renegade</small></div>
+        <div class="ticket-amount">$50</div>
+        <div class="ticket-edge">Ottinho shock result at 20-1</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-b">B+</div>
+        <div class="ticket-type">Trifecta · R11 (BOMB KEY)</div>
+        <div class="ticket-horses">PP5 → PP6 → PP7<br><small style="color:#555">Ottinho → Growth Eq → Commandment</small></div>
+        <div class="ticket-amount">$50</div>
+        <div class="ticket-edge">All three overlays complete</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-b">B</div>
+        <div class="ticket-type">Trifecta · R11</div>
+        <div class="ticket-horses">PP7 → PP6 → PP4<br><small style="color:#555">Commandment → GE → Renegade</small></div>
+        <div class="ticket-amount">$40</div>
+        <div class="ticket-edge">Trouble horse on top upset</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-b">B</div>
+        <div class="ticket-type">Trifecta · R11</div>
+        <div class="ticket-horses">PP4 → PP6 → PP8<br><small style="color:#555">Renegade → GE → Emerging Mkt</small></div>
+        <div class="ticket-amount">$40</div>
+        <div class="ticket-edge">Edge 85% · Brown 3-horse hedge</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-c">C</div>
+        <div class="ticket-type">Trifecta · R11</div>
+        <div class="ticket-horses">PP5 → PP4 → PP6<br><small style="color:#555">Ottinho → Renegade → Growth Eq</small></div>
+        <div class="ticket-amount">$40</div>
+        <div class="ticket-edge">Full Ottinho bomb sweep</div>
+      </div>
+    </div>
+    <!-- Trifecta subtotal: 60+60+55+55+50+50+40+40+40 = $450 -->
+
+    <!-- SUPERFECTA -->
+    <div class="section-head"><div class="line"></div><h3>Superfecta</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket super-ticket">
+        <div class="ticket-priority priority-a">A</div>
+        <div class="ticket-type">Superfecta · R11</div>
+        <div class="ticket-horses">PP6 → PP7 → PP4 → PP5<br><small style="color:#555">GE → Cmd → Ren → Ottinho</small></div>
+        <div class="ticket-amount">$25</div>
+        <div class="ticket-edge">All four model overlays</div>
+      </div>
+      <div class="bet-ticket super-ticket">
+        <div class="ticket-priority priority-a">A</div>
+        <div class="ticket-type">Superfecta · R11</div>
+        <div class="ticket-horses">PP4 → PP6 → PP7 → PP5<br><small style="color:#555">Ren → GE → Cmd → Ottinho</small></div>
+        <div class="ticket-amount">$25</div>
+        <div class="ticket-edge">Model #1 on top, overlays fill</div>
+      </div>
+      <div class="bet-ticket super-ticket">
+        <div class="ticket-priority priority-b">B</div>
+        <div class="ticket-type">Superfecta · R11</div>
+        <div class="ticket-horses">PP5 → PP6 → PP7 → PP4<br><small style="color:#555">Ottinho → GE → Cmd → Ren</small></div>
+        <div class="ticket-amount">$25</div>
+        <div class="ticket-edge">Maximum payout — bomb + overlay sweep</div>
+      </div>
+      <div class="bet-ticket super-ticket">
+        <div class="ticket-priority priority-b">B</div>
+        <div class="ticket-type">Superfecta · R11</div>
+        <div class="ticket-horses">PP7 → PP6 → PP4 → PP5<br><small style="color:#555">Cmd → GE → Ren → Ottinho</small></div>
+        <div class="ticket-amount">$25</div>
+        <div class="ticket-edge">Trouble horse on top score</div>
+      </div>
+    </div>
+    <!-- Super subtotal: $100 -->
+
+    <div class="budget-row">
+      <div class="budget-breakdown">
+        <div class="budget-item">WIN <span>$300</span></div>
+        <div class="budget-item">Exactas <span>$450</span></div>
+        <div class="budget-item">Trifectas <span>$450</span></div>
+        <div class="budget-item">Superfectas <span>$100</span></div>
+        <div class="budget-item">Cross-Race <span>$200</span> <em style="font-size:10px">(see below)</em></div>
+      </div>
+      <div class="budget-total">Race 11 Total: $1,500</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     RACE 7: MET MILE G1
+═══════════════════════════════════════════════════════ -->
+<div class="race-section">
+  <div class="race-header">
+    <div class="race-number">7</div>
+    <div class="race-title">
+      <div class="race-name">Hill 'n' Dale Metropolitan Handicap</div>
+      <div class="race-sub">G1 · 8 Furlongs (1 Mile) · Dirt · $1,000,000 · "The Met Mile" · Win &amp; You're In: BC Dirt Mile</div>
+    </div>
+    <div class="race-budget">
+      <div class="budget-label">Budget</div>
+      <div class="budget-amount">$750</div>
+    </div>
+  </div>
+
+  <div class="race-body">
+    <span class="pace-badge pace-normal">⚖️ NORMAL PACE — Balanced Field</span>
+
+    <table class="horse-table">
+      <thead>
+        <tr>
+          <th>Rank</th><th>PP</th><th>Horse</th><th>Trainer / Jockey</th>
+          <th>ML</th><th>Model%</th><th>Mkt%</th><th>Edge</th><th>Composite</th><th>Signals</th><th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-num">#1</span></td><td>1</td>
+          <td><div class="horse-name">Nysos</div></td>
+          <td class="trainer-jockey">B. Baffert<br>I. Ortiz Jr.</td>
+          <td><span class="ml-fav ml-odds">9-5</span></td>
+          <td class="model-pct">28.1%</td><td>34.6%</td>
+          <td class="edge-pct edge-neg">–19%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:79%"></div></div><br><span style="font-size:11px;color:var(--gray)">78.6</span></td>
+          <td><div class="signals"><span class="badge badge-combo">SHARP COMBO</span></div></td>
+          <td class="verdict-pass">Trifecta use only</td>
+        </tr>
+        <tr class="top-pick">
+          <td><span class="rank-star">★</span></td><td>4</td>
+          <td><div class="horse-name" style="color:#4caf50">Antiquarian</div>
+              <div style="font-size:10px;color:#4caf50;font-weight:bold">◀ TOP OVERLAY</div></td>
+          <td class="trainer-jockey">W. Mott<br>J. Castellano</td>
+          <td><span class="ml-high ml-odds">12-1</span></td>
+          <td class="model-pct" style="color:#4caf50">21.3%</td><td>7.4%</td>
+          <td class="edge-pct edge-pos" style="font-size:15px">+186%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:69%"></div></div><br><span style="font-size:11px;color:var(--gray)">68.5</span></td>
+          <td><div class="signals"><span class="badge badge-overlay">+186% EDGE</span></div></td>
+          <td class="verdict-bet">WIN $100 ✓</td>
+        </tr>
+        <tr class="top-pick">
+          <td><span class="rank-star">★</span></td><td>5</td>
+          <td><div class="horse-name" style="color:#4caf50">Saudi Crown</div>
+              <div style="font-size:10px;color:#4caf50;font-weight:bold">◀ 2ND OFF LAY</div></td>
+          <td class="trainer-jockey">S. Asmussen<br>M. Franco</td>
+          <td><span class="ml-high ml-odds">10-1</span></td>
+          <td class="model-pct" style="color:#4caf50">19.0%</td><td>8.8%</td>
+          <td class="edge-pct edge-pos" style="font-size:15px">+116%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:65%"></div></div><br><span style="font-size:11px;color:var(--gray)">64.6</span></td>
+          <td><div class="signals"><span class="badge badge-sol">★ 2ND OFF LAY</span><span class="badge badge-overlay">+116% EDGE</span></div></td>
+          <td class="verdict-bet">WIN $75 ✓</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#4</span></td><td>7</td>
+          <td><div class="horse-name">Journalism</div></td>
+          <td class="trainer-jockey">M. McCarthy<br>F. Prat</td>
+          <td><span class="ml-fav ml-odds">5-2</span></td>
+          <td class="model-pct">14.9%</td><td>27.7%</td>
+          <td class="edge-pct edge-neg">–46%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:57%"></div></div><br><span style="font-size:11px;color:var(--gray)">57.2</span></td>
+          <td><div class="signals"><span class="badge badge-underlay">PUBLIC UNDERLAY</span></div></td>
+          <td class="verdict-pass">FADE</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#5</span></td><td>2</td>
+          <td><div class="horse-name">Rated by Merit</div></td>
+          <td class="trainer-jockey">T. Pletcher<br>J. Rosario</td>
+          <td><span class="ml-mid ml-odds">8-1</span></td>
+          <td class="model-pct">10.7%</td><td>10.8%</td>
+          <td class="edge-pct edge-neg">–1%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:49%"></div></div><br><span style="font-size:11px;color:var(--gray)">48.5</span></td>
+          <td><div class="signals"><span class="badge badge-form">IMPROVING</span></div></td>
+          <td class="verdict-pass">Trifecta coverage</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#6</span></td><td>3</td>
+          <td><div class="horse-name">Vibe</div></td>
+          <td class="trainer-jockey">C. Brown<br>L. Saez</td>
+          <td><span class="ml-high ml-odds">15-1</span></td>
+          <td class="model-pct">4.9%</td><td>6.1%</td>
+          <td class="edge-pct edge-neg">–20%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:33%"></div></div><br><span style="font-size:11px;color:var(--gray)">32.8</span></td>
+          <td><div class="signals"><span class="badge badge-bounce">⚠ BOUNCE</span><span class="badge badge-trouble">WIDE LAST</span><span class="badge badge-form">IMPROVING</span></div></td>
+          <td class="verdict-pass">PASS</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- WIN BETS R7 -->
+    <div class="section-head"><div class="line"></div><h3>Win Bets</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket win-ticket">
+        <div class="ticket-priority priority-a">PRIMARY</div>
+        <div class="ticket-type">Win · Race 7</div>
+        <div class="ticket-horses">PP4 Antiquarian<br><small style="color:#555">12-1 ML · Pegasus Cup winner</small></div>
+        <div class="ticket-amount">$100</div>
+        <div class="ticket-edge">+186% edge · model 21.3% vs 7.4%</div>
+      </div>
+      <div class="bet-ticket win-ticket">
+        <div class="ticket-priority priority-a">PRIMARY</div>
+        <div class="ticket-type">Win · Race 7</div>
+        <div class="ticket-horses">PP5 Saudi Crown<br><small style="color:#555">10-1 ML · 2nd off layoff signal</small></div>
+        <div class="ticket-amount">$75</div>
+        <div class="ticket-edge">+116% edge · M2 2nd-Off-Layoff ★</div>
+      </div>
+    </div>
+
+    <!-- EXACTA R7 -->
+    <div class="section-head"><div class="line"></div><h3>Exacta Bets</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Exacta · R7</div>
+        <div class="ticket-horses">PP4 → PP5<br><small style="color:#555">Antiquarian → Saudi Crown</small></div>
+        <div class="ticket-amount">$90</div>
+        <div class="ticket-edge">Edge 626% · Fair 19x vs 141x ML</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Exacta · R7</div>
+        <div class="ticket-horses">PP5 → PP4<br><small style="color:#555">Saudi Crown → Antiquarian</small></div>
+        <div class="ticket-amount">$90</div>
+        <div class="ticket-edge">Edge 595% · Fair 20x vs 139x ML</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-b">A</div>
+        <div class="ticket-type">Exacta · R7</div>
+        <div class="ticket-horses">PP4 → PP2<br><small style="color:#555">Antiquarian → Rated by Merit</small></div>
+        <div class="ticket-amount">$50</div>
+        <div class="ticket-edge">Edge 234% · backup exacta</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-c">B</div>
+        <div class="ticket-type">Exacta · R7</div>
+        <div class="ticket-horses">PP4 → PP1<br><small style="color:#555">Antiquarian → Nysos</small></div>
+        <div class="ticket-amount">$30</div>
+        <div class="ticket-edge">Edge 173% · chalk backup</div>
+      </div>
+    </div>
+    <!-- Exacta R7: 90+90+50+30 = $260 -->
+
+    <!-- TRIFECTA R7 -->
+    <div class="section-head"><div class="line"></div><h3>Trifecta Keys</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Trifecta · R7</div>
+        <div class="ticket-horses">PP1 → PP4 → PP5<br><small style="color:#555">Nysos → Antiq → Saudi Crown</small></div>
+        <div class="ticket-amount">$50</div>
+        <div class="ticket-edge">Edge 422% · Fair 32x vs 167x ML</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Trifecta · R7</div>
+        <div class="ticket-horses">PP1 → PP5 → PP4<br><small style="color:#555">Nysos → Saudi Crown → Antiq</small></div>
+        <div class="ticket-amount">$50</div>
+        <div class="ticket-edge">Edge 387% · exact same horses, flip</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-b">B</div>
+        <div class="ticket-type">Trifecta · R7</div>
+        <div class="ticket-horses">PP1 → PP4 → PP2<br><small style="color:#555">Nysos → Antiq → Rated by Merit</small></div>
+        <div class="ticket-amount">$30</div>
+        <div class="ticket-edge">Edge 140% · coverage ticket</div>
+      </div>
+    </div>
+    <!-- Trifecta R7: 50+50+30 = $130 -->
+
+    <!-- SUPERFECTA R7 -->
+    <div class="section-head"><div class="line"></div><h3>Superfecta</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket super-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Superfecta · R7</div>
+        <div class="ticket-horses">PP4 → PP5 → PP1 → PP7<br><small style="color:#555">Antiq → S.Crown → Nysos → Journalism</small></div>
+        <div class="ticket-amount">$30</div>
+        <div class="ticket-edge">Edge 464% · Fair 74x vs 419x ML</div>
+      </div>
+      <div class="bet-ticket super-ticket">
+        <div class="ticket-priority priority-b">B</div>
+        <div class="ticket-type">Superfecta · R7</div>
+        <div class="ticket-horses">PP4 → PP5 → PP7 → PP1<br><small style="color:#555">Antiq → S.Crown → Journalism → Nysos</small></div>
+        <div class="ticket-amount">$15</div>
+        <div class="ticket-edge">Edge 456% · odds order flip</div>
+      </div>
+    </div>
+    <!-- Super R7: $45 -->
+
+    <div class="budget-row">
+      <div class="budget-breakdown">
+        <div class="budget-item">WIN <span>$175</span></div>
+        <div class="budget-item">Exactas <span>$260</span></div>
+        <div class="budget-item">Trifectas <span>$130</span></div>
+        <div class="budget-item">Superfectas <span>$45</span></div>
+        <div class="budget-item">DD (R7→R9) <span>$140</span></div>
+      </div>
+      <div class="budget-total">Race 7 Total: $750</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     RACE 9: WOODY STEPHENS G1
+═══════════════════════════════════════════════════════ -->
+<div class="race-section">
+  <div class="race-header">
+    <div class="race-number">9</div>
+    <div class="race-title">
+      <div class="race-name">Woody Stephens Stakes</div>
+      <div class="race-sub">G1 · 7 Furlongs · Dirt · $500,000 · 3-Year-Old Sprint Classic</div>
+    </div>
+    <div class="race-budget">
+      <div class="budget-label">Budget</div>
+      <div class="budget-amount">$750</div>
+    </div>
+  </div>
+
+  <div class="race-body">
+    <span class="pace-badge pace-hot">🔥 HOT PACE — Three Pressers on Front, Stalkers Get the Edge at 7f</span>
+
+    <table class="horse-table">
+      <thead>
+        <tr>
+          <th>Rank</th><th>PP</th><th>Horse</th><th>Trainer / Jockey</th>
+          <th>ML</th><th>Model%</th><th>Mkt%</th><th>Edge</th><th>Composite</th><th>Signals</th><th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="top-pick">
+          <td><span class="rank-star">★★</span></td><td>5</td>
+          <td><div class="horse-name" style="color:#4caf50">Violet Tempest</div>
+              <div style="font-size:10px;color:#4caf50;font-weight:bold">◀ DOMINANT PICK</div></td>
+          <td class="trainer-jockey">M. Maker<br>T. Gaffalione</td>
+          <td><span class="ml-mid ml-odds">6-1</span></td>
+          <td class="model-pct" style="color:#4caf50;font-size:16px">46.3%</td><td>18.8%</td>
+          <td class="edge-pct edge-pos" style="font-size:16px">+147%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:81%"></div></div><br><span style="font-size:11px;color:var(--gray)">80.5</span></td>
+          <td><div class="signals">
+            <span class="badge badge-overlay" style="font-size:11px">+147% EDGE</span>
+          </div></td>
+          <td class="verdict-bet">WIN $150 ✓✓</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#2</span></td><td>1</td>
+          <td><div class="horse-name">Storm Trigger</div></td>
+          <td class="trainer-jockey">C. Brown<br>I. Ortiz Jr.</td>
+          <td><span class="ml-fav ml-odds">3-1</span></td>
+          <td class="model-pct">20.6%</td><td>32.8%</td>
+          <td class="edge-pct edge-neg">–37%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:54%"></div></div><br><span style="font-size:11px;color:var(--gray)">53.6</span></td>
+          <td><div class="signals"><span class="badge badge-bounce">⚠ BOUNCE</span><span class="badge badge-underlay">UNDERLAY</span><span class="badge badge-combo">SHARP COMBO</span></div></td>
+          <td class="verdict-pass">FADE — bounce</td>
+        </tr>
+        <tr class="top-pick">
+          <td><span class="rank-star">★</span></td><td>4</td>
+          <td><div class="horse-name" style="color:#4caf50">Nightshade Queen</div></td>
+          <td class="trainer-jockey">W. Mott<br>J. Rosario</td>
+          <td><span class="ml-high ml-odds">10-1</span></td>
+          <td class="model-pct" style="color:#4caf50">18.4%</td><td>11.9%</td>
+          <td class="edge-pct edge-pos">+54%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:51%"></div></div><br><span style="font-size:11px;color:var(--gray)">50.7</span></td>
+          <td><div class="signals"><span class="badge badge-overlay">+54% EDGE</span></div></td>
+          <td class="verdict-bet">WIN $75 ✓</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#4</span></td><td>2</td>
+          <td><div class="horse-name">Coral Drift</div></td>
+          <td class="trainer-jockey">T. Pletcher<br>J. Castellano</td>
+          <td><span class="ml-fav ml-odds">5-1</span></td>
+          <td class="model-pct">14.2%</td><td>21.9%</td>
+          <td class="edge-pct edge-neg">–35%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:45%"></div></div><br><span style="font-size:11px;color:var(--gray)">44.5</span></td>
+          <td><div class="signals"><span class="badge badge-bounce">⚠ BOUNCE</span><span class="badge badge-underlay">UNDERLAY</span><span class="badge badge-combo">SHARP COMBO</span></div></td>
+          <td class="verdict-pass">PASS — bounce</td>
+        </tr>
+        <tr>
+          <td><span class="rank-num">#5</span></td><td>3</td>
+          <td><div class="horse-name">Prairie Wind</div></td>
+          <td class="trainer-jockey">B. Cox<br>L. Saez</td>
+          <td><span class="ml-mid ml-odds">8-1</span></td>
+          <td class="model-pct">0.5%</td><td>14.6%</td>
+          <td class="edge-pct edge-neg">–97%</td>
+          <td><div class="composite-bar"><div class="composite-fill" style="width:9%"></div></div><br><span style="font-size:11px;color:var(--gray)">8.8</span></td>
+          <td><div class="signals"><span class="badge badge-bounce">⚠ BOUNCE</span><span class="badge badge-underlay">HARD FADE</span></div></td>
+          <td class="verdict-pass">HARD PASS</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- WIN BETS R9 -->
+    <div class="section-head"><div class="line"></div><h3>Win Bets</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket win-ticket">
+        <div class="ticket-priority priority-a">PRIMARY</div>
+        <div class="ticket-type">Win · Race 9</div>
+        <div class="ticket-horses">PP5 Violet Tempest<br><small style="color:#555">6-1 ML · 46.3% model probability!</small></div>
+        <div class="ticket-amount">$150</div>
+        <div class="ticket-edge">+147% edge · massive model-vs-market gap</div>
+      </div>
+      <div class="bet-ticket win-ticket">
+        <div class="ticket-priority priority-b">BACKUP</div>
+        <div class="ticket-type">Win · Race 9</div>
+        <div class="ticket-horses">PP4 Nightshade Queen<br><small style="color:#555">10-1 ML · closing style fits</small></div>
+        <div class="ticket-amount">$75</div>
+        <div class="ticket-edge">+54% edge · model 18.4% vs 11.9%</div>
+      </div>
+    </div>
+
+    <!-- EXACTA R9 -->
+    <div class="section-head"><div class="line"></div><h3>Exacta Bets</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Exacta · R9</div>
+        <div class="ticket-horses">PP5 → PP4<br><small style="color:#555">Violet Tempest → Nightshade Queen</small></div>
+        <div class="ticket-amount">$100</div>
+        <div class="ticket-edge">Edge 475% · Fair 6x vs 36x ML</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-a">A</div>
+        <div class="ticket-type">Exacta · R9</div>
+        <div class="ticket-horses">PP4 → PP5<br><small style="color:#555">Nightshade Queen → Violet Tempest</small></div>
+        <div class="ticket-amount">$75</div>
+        <div class="ticket-edge">Edge 310% · reverse for coverage</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-b">B</div>
+        <div class="ticket-type">Exacta · R9</div>
+        <div class="ticket-horses">PP5 → PP2<br><small style="color:#555">Violet Tempest → Coral Drift</small></div>
+        <div class="ticket-amount">$50</div>
+        <div class="ticket-edge">Edge 142% · chalk finisher coverage</div>
+      </div>
+      <div class="bet-ticket exacta-ticket">
+        <div class="ticket-priority priority-c">B</div>
+        <div class="ticket-type">Exacta · R9</div>
+        <div class="ticket-horses">PP5 → PP1<br><small style="color:#555">Violet Tempest → Storm Trigger</small></div>
+        <div class="ticket-amount">$40</div>
+        <div class="ticket-edge">Edge 134% · favorite backup</div>
+      </div>
+    </div>
+
+    <!-- TRIFECTA R9 -->
+    <div class="section-head"><div class="line"></div><h3>Trifecta Keys</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Trifecta · R9</div>
+        <div class="ticket-horses">PP5 → PP4 → PP2<br><small style="color:#555">VT → Nightshade Q → Coral Drift</small></div>
+        <div class="ticket-amount">$60</div>
+        <div class="ticket-edge">Edge 632% · Fair 16x vs 115x ML</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Trifecta · R9</div>
+        <div class="ticket-horses">PP5 → PP4 → PP1<br><small style="color:#555">VT → Nightshade Q → Storm Trigger</small></div>
+        <div class="ticket-amount">$60</div>
+        <div class="ticket-edge">Edge 608% · Fair 11x vs 77x ML</div>
+      </div>
+      <div class="bet-ticket trifecta-ticket">
+        <div class="ticket-priority priority-b">B</div>
+        <div class="ticket-type">Trifecta · R9</div>
+        <div class="ticket-horses">PP5 → PP1 → PP4<br><small style="color:#555">VT → Storm Trigger → Nightshade Q</small></div>
+        <div class="ticket-amount">$40</div>
+        <div class="ticket-edge">Edge 427% · flip 2nd/3rd spots</div>
+      </div>
+    </div>
+
+    <!-- SUPERFECTA R9 -->
+    <div class="section-head"><div class="line"></div><h3>Superfecta</h3><div class="line"></div></div>
+    <div class="bet-grid">
+      <div class="bet-ticket super-ticket">
+        <div class="ticket-priority priority-a">A+</div>
+        <div class="ticket-type">Superfecta · R9</div>
+        <div class="ticket-horses">PP5 → PP4 → PP1 → PP2<br><small style="color:#555">VT → NQ → Storm Trig → Coral Drift</small></div>
+        <div class="ticket-amount">$30</div>
+        <div class="ticket-edge">Edge 1036% · highest edge on card!</div>
+      </div>
+    </div>
+
+    <div class="budget-row">
+      <div class="budget-breakdown">
+        <div class="budget-item">WIN <span>$225</span></div>
+        <div class="budget-item">Exactas <span>$265</span></div>
+        <div class="budget-item">Trifectas <span>$160</span></div>
+        <div class="budget-item">Superfectas <span>$30</span></div>
+        <div class="budget-item">DD (R9→R11) <span>$70</span></div>
+      </div>
+      <div class="budget-total">Race 9 Total: $750</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     CROSS-RACE EXOTICS
+═══════════════════════════════════════════════════════ -->
+<div class="xrace-section">
+  <h2>⚡ Cross-Race Exotic Tickets — Pittsburgh Phil Multi-Race Method</h2>
+  <p style="color:var(--gray);font-size:12px;margin-bottom:16px;">
+    Phil's real edge came from connecting races. These tickets compound overlay probabilities across legs.
+    A 40% edge in two consecutive races becomes ~100% edge in the Daily Double.
+  </p>
+
+  <div class="section-head"><div class="line"></div><h3>Daily Double R7 → R9</h3><div class="line"></div></div>
+  <div class="bet-grid">
+    <div class="bet-ticket dd-ticket">
+      <div class="ticket-priority priority-a">A+</div>
+      <div class="ticket-type">Daily Double · R7 → R9</div>
+      <div class="ticket-horses">Antiquarian OR Saudi Crown<br>→ Violet Tempest<br><small style="color:#555">2 combos × $30 = $60</small></div>
+      <div class="ticket-amount">$60</div>
+      <div class="ticket-edge">Model 22.9% · Edge 190% · Fair 4x vs 13x</div>
+    </div>
+    <div class="bet-ticket dd-ticket">
+      <div class="ticket-priority priority-b">B</div>
+      <div class="ticket-type">Daily Double · R7 → R9</div>
+      <div class="ticket-horses">Antiquarian<br>→ Violet Tempest<br><small style="color:#555">KEY × KEY</small></div>
+      <div class="ticket-amount">$40</div>
+      <div class="ticket-edge">Model 13.0% · Edge 100% · Fair 8x vs 15x</div>
+    </div>
+    <div class="bet-ticket dd-ticket">
+      <div class="ticket-priority priority-c">C</div>
+      <div class="ticket-type">Daily Double · R7 → R9</div>
+      <div class="ticket-horses">Antiq + Saudi Crown<br>→ VT + Nightshade Q<br><small style="color:#555">4 combos × $10 = $40</small></div>
+      <div class="ticket-amount">$40</div>
+      <div class="ticket-edge">Model 33.1% · Edge 52% · SPREAD ticket</div>
+    </div>
+  </div>
+
+  <div class="section-head"><div class="line"></div><h3>Daily Double R9 → R11</h3><div class="line"></div></div>
+  <div class="bet-grid">
+    <div class="bet-ticket dd-ticket">
+      <div class="ticket-priority priority-a">A+</div>
+      <div class="ticket-type">Daily Double · R9 → R11</div>
+      <div class="ticket-horses">Violet Tempest<br>→ Renegade OR Commandment<br><small style="color:#555">2 combos × $25 = $50</small></div>
+      <div class="ticket-amount">$50</div>
+      <div class="ticket-edge">Model 17.3% · Edge 149% · Fair 6x vs 14x</div>
+    </div>
+    <div class="bet-ticket dd-ticket">
+      <div class="ticket-priority priority-a">A</div>
+      <div class="ticket-type">Daily Double · R9 → R11</div>
+      <div class="ticket-horses">Violet Tempest<br>→ Growth Equity<br><small style="color:#555">KEY × KEY overlay</small></div>
+      <div class="ticket-amount">$30</div>
+      <div class="ticket-edge">Two biggest overlays connected</div>
+    </div>
+    <div class="bet-ticket dd-ticket">
+      <div class="ticket-priority priority-b">B</div>
+      <div class="ticket-type">Daily Double · R9 → R11</div>
+      <div class="ticket-horses">VT + Nightshade Q<br>→ Renegade + Commandment<br><small style="color:#555">4 combos × $5 = $20</small></div>
+      <div class="ticket-amount">$20</div>
+      <div class="ticket-edge">SPREAD — defensive coverage</div>
+    </div>
+  </div>
+
+  <div class="section-head"><div class="line"></div><h3>Pick 3 R7 → R9 → R11</h3><div class="line"></div></div>
+  <div class="bet-grid">
+    <div class="bet-ticket pick3-ticket">
+      <div class="ticket-priority priority-a">A</div>
+      <div class="ticket-type">Pick 3 · R7→R9→R11</div>
+      <div class="ticket-horses">Antiquarian + Saudi Crown<br>→ Violet Tempest<br>→ Renegade<br><small style="color:#555">2 combos × $15 = $30</small></div>
+      <div class="ticket-amount">$30</div>
+      <div class="ticket-edge">Model 5.3% · Edge 160% · Fair 19x vs 49x</div>
+    </div>
+    <div class="bet-ticket pick3-ticket">
+      <div class="ticket-priority priority-b">B</div>
+      <div class="ticket-type">Pick 3 · R7→R9→R11</div>
+      <div class="ticket-horses">Antiquarian<br>→ Violet Tempest<br>→ Renegade + Commandment<br><small style="color:#555">2 combos × $12 = $24</small></div>
+      <div class="ticket-amount">$24</div>
+      <div class="ticket-edge">Model 4.9% · Edge 102%</div>
+    </div>
+    <div class="bet-ticket pick3-ticket">
+      <div class="ticket-priority priority-b">B+</div>
+      <div class="ticket-type">Pick 3 · R7→R9→R11</div>
+      <div class="ticket-horses">Antiq + Saudi Crown<br>→ VT + Nightshade Q<br>→ Ren + Commandment<br><small style="color:#555">8 combos × $2 = $16</small></div>
+      <div class="ticket-amount">$16</div>
+      <div class="ticket-edge">SPREAD 2×2×2 · Edge 54% · coverage</div>
+    </div>
+  </div>
+
+  <div class="budget-row" style="margin-top:16px">
+    <div class="budget-breakdown">
+      <div class="budget-item">DD R7→R9 <span>$140</span></div>
+      <div class="budget-item">DD R9→R11 <span>$100</span></div>
+      <div class="budget-item">Pick 3 <span>$70</span></div>
+    </div>
+    <div class="budget-total">Cross-Race Total: $310 <em style="font-size:11px;color:var(--gray)">(allocated from R7/R9/R11 budgets above)</em></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     NON-STAKES RACES
+═══════════════════════════════════════════════════════ -->
+<div class="nonstakes-section">
+  <div class="section-head"><div class="line"></div><h3>Non-Stakes Card — $500 Allocation (Races 1–6, 8, 10)</h3><div class="line"></div></div>
+  <p style="color:var(--gray);font-size:12px;margin-bottom:12px;">
+    Apply the same Pittsburgh Phil methodology to the remaining races. Below are the key rules for deploying the $500 non-stakes budget.
+  </p>
+  <div class="nonstakes-grid">
+    <div class="nonstakes-rule">
+      <div class="rule-title">Bet Size Rule</div>
+      <div class="rule-text">$25–$75 max per race. Never exceed 15% of the $500 non-stakes sub-bankroll on any single race.</div>
+    </div>
+    <div class="nonstakes-rule">
+      <div class="rule-title">M5 Overlay Minimum</div>
+      <div class="rule-text">Only bet a race if at least one horse has 10%+ edge. Fading action without an overlay is just donating.</div>
+    </div>
+    <div class="nonstakes-rule">
+      <div class="rule-title">Bounce Awareness</div>
+      <div class="rule-text">Flag any horse whose last-out Beyer equals career best AND ran within 5 weeks. Reduce or eliminate win bets.</div>
+    </div>
+    <div class="nonstakes-rule">
+      <div class="rule-title">2nd Off Layoff Hunt</div>
+      <div class="rule-text">Actively seek horses returning for their 2nd start after a 60-day+ layoff. These are Phil's favorite angles in non-stakes fields.</div>
+    </div>
+    <div class="nonstakes-rule">
+      <div class="rule-title">Trouble Horses</div>
+      <div class="rule-text">Any horse with "bumped," "checked," "blocked," or "wide" in last race comment gets +2.5 pts. Look for these in maiden races.</div>
+    </div>
+    <div class="nonstakes-rule">
+      <div class="rule-title">Exotic Focus</div>
+      <div class="rule-text">In non-stakes races, prefer exactas and trifectas over straight win bets. Better risk-adjusted value in smaller fields.</div>
+    </div>
+    <div class="nonstakes-rule">
+      <div class="rule-title">Sharp Combo Signal</div>
+      <div class="rule-text">Trainer/jockey combos with 25%+ win rate and 10+ starts together (M7) get a mandatory inclusion in exotic tickets.</div>
+    </div>
+    <div class="nonstakes-rule">
+      <div class="rule-title">Closing Thought</div>
+      <div class="rule-text"><em>"The average man bets on the favorite because he's afraid of being wrong. Pittsburgh Phil bet on the overlay because he wasn't afraid to be right."</em></div>
+    </div>
+  </div>
+  <div style="margin-top:12px;padding:10px 12px;background:rgba(201,162,39,0.1);border-radius:4px;">
+    <span style="color:var(--gold);font-weight:bold;font-size:13px;">💡 Suggested Deployment:</span>
+    <span style="color:var(--white);font-size:12px;margin-left:8px;">$50 per race × 8 remaining races (1–6, 8, 10) = $400 base, $100 reserve for live tote adjustments with <code style="background:rgba(255,255,255,0.1);padding:2px 5px;border-radius:3px;">--tote</code> flag</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SUMMARY TABLE
+═══════════════════════════════════════════════════════ -->
+<div class="totals-section">
+  <h2>📊 Complete Day Summary</h2>
+  <table class="totals-table">
+    <thead>
+      <tr>
+        <th>Race</th>
+        <th>Event</th>
+        <th>Top Picks</th>
+        <th>Win Bets</th>
+        <th>Exotics</th>
+        <th>Race Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="subtotal-row">
+        <td><strong>R7</strong></td>
+        <td>Met Mile G1</td>
+        <td>Antiquarian (12-1) · Saudi Crown (10-1)★</td>
+        <td>$175</td>
+        <td>$435</td>
+        <td class="highlight">$750</td>
+      </tr>
+      <tr class="subtotal-row">
+        <td><strong>R9</strong></td>
+        <td>Woody Stephens G1</td>
+        <td>Violet Tempest (6-1) ★★ · Nightshade Q (10-1)</td>
+        <td>$225</td>
+        <td>$525</td>
+        <td class="highlight">$750</td>
+      </tr>
+      <tr class="subtotal-row">
+        <td><strong>R11</strong></td>
+        <td>158th Belmont Stakes G1</td>
+        <td>Ottinho (20-1) ★ · Growth Equity (12-1) ★</td>
+        <td>$300</td>
+        <td>$1,200</td>
+        <td class="highlight">$1,500</td>
+      </tr>
+      <tr class="subtotal-row">
+        <td><strong>R1–10</strong></td>
+        <td>Non-Stakes Card</td>
+        <td>Apply model — 10%+ edge minimum</td>
+        <td>$250</td>
+        <td>$250</td>
+        <td class="highlight">$500</td>
+      </tr>
+      <tr class="total-row">
+        <td colspan="3"><strong>TOTAL BANKROLL DEPLOYED</strong></td>
+        <td><strong>$950</strong></td>
+        <td><strong>$2,410</strong></td>
+        <td><strong>$3,500</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+    <div style="background:rgba(0,0,0,0.2);padding:12px;border-radius:6px;border-left:3px solid var(--green-light);">
+      <div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:1px">Key Belmont Overlays</div>
+      <div style="font-size:15px;color:var(--green-light);font-weight:bold;margin-top:4px">Ottinho +200% · Growth Eq +95%</div>
+      <div style="font-size:11px;color:var(--white);opacity:0.8">Fade Renegade bounce · Fade Golden Tempo bounce</div>
+    </div>
+    <div style="background:rgba(0,0,0,0.2);padding:12px;border-radius:6px;border-left:3px solid var(--gold);">
+      <div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:1px">Met Mile Value</div>
+      <div style="font-size:15px;color:var(--gold);font-weight:bold;margin-top:4px">Antiquarian +186% · Saudi Crown +116%★</div>
+      <div style="font-size:11px;color:var(--white);opacity:0.8">Nysos overbet · Journalism fade · 2nd off layoff</div>
+    </div>
+    <div style="background:rgba(0,0,0,0.2);padding:12px;border-radius:6px;border-left:3px solid #4caf50;">
+      <div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:1px">Woody Stephens Lock</div>
+      <div style="font-size:15px;color:#4caf50;font-weight:bold;margin-top:4px">Violet Tempest: 46.3% model / 6-1 ML</div>
+      <div style="font-size:11px;color:var(--white);opacity:0.8">3 horses bouncing — Phil's dream scenario</div>
+    </div>
+    <div style="background:rgba(0,0,0,0.2);padding:12px;border-radius:6px;border-left:3px solid #ff8a65;">
+      <div style="font-size:10px;color:var(--gray);text-transform:uppercase;letter-spacing:1px">Trifecta Special</div>
+      <div style="font-size:15px;color:#ff8a65;font-weight:bold;margin-top:4px">R9 Superfecta: Edge 1,036%</div>
+      <div style="font-size:11px;color:var(--white);opacity:0.8">VT → NQ → Storm Trigger → Coral Drift</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     MAXIMS LEGEND
+═══════════════════════════════════════════════════════ -->
+<div class="maxims-legend">
+  <h3>Pittsburgh Phil's Maxims — Signal Key</h3>
+  <div class="maxims-grid">
+    <div class="maxim-item"><span>M1 ⚠ BOUNCE</span> — Career-best Beyer last out within 5 weeks → expect regression</div>
+    <div class="maxim-item"><span>M2 ★ 2ND OFF LAY</span> — 2nd start after 60-day layoff → peak fitness arrival</div>
+    <div class="maxim-item"><span>M3 TROUBLE</span> — Bumped/checked/blocked last out → better than finish shows</div>
+    <div class="maxim-item"><span>M4 CLASS DROP</span> — Running below best class → spot play value</div>
+    <div class="maxim-item"><span>M5 OVERLAY</span> — Model probability &gt;10% above market → bet signal</div>
+    <div class="maxim-item"><span>M6 UNDERLAY</span> — Public money well above model → fade signal</div>
+    <div class="maxim-item"><span>M7 SHARP COMBO</span> — Trainer/jockey 25%+ win rate, 10+ starts together</div>
+    <div class="maxim-item"><span>M8 SURFACE FIRST</span> — First start on current surface → risk flag</div>
+    <div class="maxim-item"><span>M9 IMPROVING</span> — Three consecutive improving Beyer figures → trajectory up</div>
+    <div class="maxim-item"><span>M10 CLOSER 12f</span> — Running style C/S in routes 10f+ → major advantage</div>
+  </div>
+</div>
+
+<p class="disclaimer">
+  This betting card is generated by the Pittsburgh Phil Handicapping Model v2 for entertainment and analytical purposes only.
+  Past performance data sourced from publicly available racing records as of June 6, 2026.
+  All odds, field configurations, and race conditions are subject to change.
+  Please gamble responsibly. Never bet more than you can afford to lose.
+  Race results, injuries, and scratches may materially alter the optimal betting strategy.
+  <br><br>
+  <strong>Model built by Alpha Query Monitor · Pittsburgh Phil v2 · Saratoga Race Course · June 6, 2026</strong>
+</p>
+
+</div><!-- end card-body -->
+</body>
+</html>
