@@ -1,0 +1,90 @@
+{
+  "title": "META Down / QQQ Up \u22652% Divergence Analysis",
+  "generated": "2026-06-12",
+  "description": "Historical scan for sessions where META Platforms (NASDAQ: META) closed negative while the Invesco QQQ Trust (NASDAQ: QQQ) gained \u22652%. These events represent notable idiosyncratic weakness in META against a strongly bullish Nasdaq-100 backdrop.",
+  "data_source": "Interactive Brokers / IBKR price history",
+  "summary": {
+    "window": "2021-06-14 to 2026-06-11",
+    "total_trading_days": 1254,
+    "divergence_events": 7,
+    "frequency_pct": 0.56,
+    "avg_qqq_ret_pct": 2.48,
+    "avg_meta_ret_pct": -1.22,
+    "avg_spread_bp": 370.0,
+    "max_qqq_ret_pct": 3.3776,
+    "min_meta_ret_pct": -4.0857,
+    "most_recent_event": "2026-06-11"
+  },
+  "events": [
+    {
+      "date": "2022-06-21",
+      "weekday": "Tuesday",
+      "meta_ret_pct": -4.0857,
+      "qqq_ret_pct": 2.3263,
+      "meta_close": 157.05,
+      "qqq_close": 281.08,
+      "spread_bp": 641.2
+    },
+    {
+      "date": "2022-10-21",
+      "weekday": "Friday",
+      "meta_ret_pct": -1.1556,
+      "qqq_ret_pct": 2.3448,
+      "meta_close": 130.01,
+      "qqq_close": 275.42,
+      "spread_bp": 350.0
+    },
+    {
+      "date": "2023-05-05",
+      "weekday": "Friday",
+      "meta_ret_pct": -0.3169,
+      "qqq_ret_pct": 2.1254,
+      "meta_close": 232.78,
+      "qqq_close": 322.89,
+      "spread_bp": 244.2
+    },
+    {
+      "date": "2024-11-06",
+      "weekday": "Wednesday",
+      "meta_ret_pct": -0.0664,
+      "qqq_ret_pct": 2.7163,
+      "meta_close": 572.05,
+      "qqq_close": 505.58,
+      "spread_bp": 278.3
+    },
+    {
+      "date": "2026-02-06",
+      "weekday": "Friday",
+      "meta_ret_pct": -1.3056,
+      "qqq_ret_pct": 2.1138,
+      "meta_close": 661.46,
+      "qqq_close": 609.65,
+      "spread_bp": 341.9
+    },
+    {
+      "date": "2026-05-08",
+      "weekday": "Friday",
+      "meta_ret_pct": -1.1641,
+      "qqq_ret_pct": 2.3441,
+      "meta_close": 609.63,
+      "qqq_close": 711.23,
+      "spread_bp": 350.8
+    },
+    {
+      "date": "2026-06-11",
+      "weekday": "Thursday",
+      "meta_ret_pct": -0.4466,
+      "qqq_ret_pct": 3.3776,
+      "meta_close": 568.43,
+      "qqq_close": 717.12,
+      "spread_bp": 382.4
+    }
+  ],
+  "notes": [
+    "Data window is limited to 5 years (IBKR API maximum for daily bars).",
+    "Returns are close-to-close, unadjusted for dividends (QQQ distributes dividends).",
+    "The 2026-06-11 event (most recent) had the largest QQQ gain (+3.38%) of any occurrence.",
+    "Events cluster on Fridays (4 of 7), possibly linked to options-expiration dynamics.",
+    "META was formerly traded as FB (Facebook); ticker changed to META on 2021-10-28. All available data in this window uses the current META ticker."
+  ]
+}
