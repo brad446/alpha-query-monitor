@@ -1,0 +1,167 @@
+{
+  "track": "Saratoga Race Course",
+  "date": "2026-07-11",
+  "races": [
+    {
+      "race": 1,
+      "name": "Maiden Special Weight",
+      "grade": null,
+      "distance_furlongs": 5.5,
+      "surface": "dirt",
+      "purse": 115000,
+      "horses": [
+        {"name": "Decimation", "jockey": "R. Santana Jr.", "trainer": "S. Asmussen", "morning_line": "7-2", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.22, "past_races": []},
+        {"name": "Magic Chuck", "jockey": "T. Gaffalione", "trainer": "W. Beckman", "morning_line": "6-1", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.14, "past_races": []},
+        {"name": "Warrior's Pride", "jockey": "J. Alvarado", "trainer": "C. Brown", "morning_line": "5-2", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.23, "past_races": []},
+        {"name": "First Encounter", "jockey": "M. Franco", "trainer": "T. Pletcher", "morning_line": "3-1", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.21, "past_races": []},
+        {"name": "Coastal Run", "jockey": "F. Prat", "trainer": "B. Cox", "morning_line": "4-1", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.20, "past_races": []}
+      ]
+    },
+    {
+      "race": 2,
+      "name": "Maiden Special Weight (F)",
+      "grade": null,
+      "distance_furlongs": 5.5,
+      "surface": "dirt",
+      "purse": 115000,
+      "horses": [
+        {"name": "Hot Fries", "jockey": "R. Santana Jr.", "trainer": "S. Asmussen", "morning_line": "7-2", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.22, "past_races": []},
+        {"name": "Angel of Kirk", "jockey": "F. Prat", "trainer": "B. Cox", "morning_line": "5-2", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.20, "past_races": []},
+        {"name": "Sapphire Wish", "jockey": "I. Ortiz Jr.", "trainer": "T. Pletcher", "morning_line": "3-1", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.21, "past_races": []},
+        {"name": "Summer Darling", "jockey": "J. Velazquez", "trainer": "J. Abreu", "morning_line": "9-2", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.16, "past_races": []}
+      ]
+    },
+    {
+      "race": 3,
+      "name": "Maiden Special Weight",
+      "grade": null,
+      "distance_furlongs": 6.0,
+      "surface": "dirt",
+      "purse": 115000,
+      "horses": [
+        {"name": "Speightful Lily", "jockey": "F. Prat", "trainer": "J. Abreu", "morning_line": "6-5", "career_best_beyer": 78, "final_2f_figure": 38, "jockey_trainer_win_pct": 0.18, "past_races": [{"date": "2026-06-06", "race_name": "Maiden Spl Wt Belmont", "finish": 2, "beyer": 78, "track": "SAR", "e2_pace_figure": 85, "lp_figure": 78, "comment": "pressed pace, weakened"}]},
+        {"name": "Midnight Surge", "jockey": "L. Saez", "trainer": "C. McGaughey", "morning_line": "4-1", "career_best_beyer": 72, "final_2f_figure": 36, "jockey_trainer_win_pct": 0.16, "past_races": [{"date": "2026-06-13", "race_name": "Maiden Spl Wt Belmont", "finish": 3, "beyer": 72, "track": "SAR", "e2_pace_figure": 83, "lp_figure": 74, "comment": ""}]},
+        {"name": "Road to Glory", "jockey": "J. Alvarado", "trainer": "B. Mott", "morning_line": "9-2", "career_best_beyer": 74, "final_2f_figure": 37, "jockey_trainer_win_pct": 0.17, "past_races": [{"date": "2026-06-20", "race_name": "Maiden Spl Wt Belmont", "finish": 2, "beyer": 74, "track": "BEL", "e2_pace_figure": 82, "lp_figure": 76, "comment": "bumped at break, recovered well"}]}
+      ]
+    },
+    {
+      "race": 4,
+      "name": "Allowance Optional Claiming",
+      "grade": null,
+      "distance_furlongs": 8.0,
+      "surface": "turf",
+      "purse": 125000,
+      "horses": [
+        {"name": "Sounds Like A Plan", "jockey": "J. Velazquez", "trainer": "C. Brown", "morning_line": "4-1", "career_best_beyer": 94, "final_2f_figure": 45, "jockey_trainer_win_pct": 0.21, "past_races": [{"date": "2026-06-14", "race_name": "AOC Belmont Turf", "finish": 2, "beyer": 91, "track": "BEL", "e2_pace_figure": 89, "lp_figure": 88, "comment": ""}, {"date": "2026-05-10", "race_name": "AOC Churchill Turf", "finish": 1, "beyer": 94, "track": "CD", "e2_pace_figure": 90, "lp_figure": 87, "comment": ""}]},
+        {"name": "Alan Turing", "jockey": "T. Gaffalione", "trainer": "H. Motion", "morning_line": "10-1", "career_best_beyer": 91, "final_2f_figure": 44, "jockey_trainer_win_pct": 0.18, "past_races": [{"date": "2026-06-07", "race_name": "Allowance Belmont Turf", "finish": 3, "beyer": 88, "track": "BEL", "e2_pace_figure": 85, "lp_figure": 88, "comment": "steadied in traffic early"}, {"date": "2026-05-03", "race_name": "Allowance CD Turf", "finish": 2, "beyer": 91, "track": "CD", "e2_pace_figure": 86, "lp_figure": 89, "comment": ""}]},
+        {"name": "Life and Times", "jockey": "L. Saez", "trainer": "T. Pletcher", "morning_line": "7-2", "career_best_beyer": 96, "final_2f_figure": 47, "jockey_trainer_win_pct": 0.20, "past_races": [{"date": "2026-06-21", "race_name": "AOC Belmont Turf", "finish": 1, "beyer": 93, "track": "BEL", "e2_pace_figure": 88, "lp_figure": 91, "comment": ""}, {"date": "2026-05-18", "race_name": "Allowance Churchill Turf", "finish": 2, "beyer": 90, "track": "CD", "e2_pace_figure": 87, "lp_figure": 89, "comment": ""}, {"date": "2026-04-05", "race_name": "AOC Aqueduct Turf", "finish": 1, "beyer": 96, "track": "AQU", "e2_pace_figure": 89, "lp_figure": 92, "comment": ""}]},
+        {"name": "Harlem Nocturne", "jockey": "M. Franco", "trainer": "R. Rodriguez", "morning_line": "5-1", "career_best_beyer": 93, "final_2f_figure": 44, "jockey_trainer_win_pct": 0.15, "past_races": [{"date": "2026-06-14", "race_name": "AOC Belmont Turf", "finish": 3, "beyer": 89, "track": "BEL", "e2_pace_figure": 87, "lp_figure": 87, "comment": ""}, {"date": "2026-04-26", "race_name": "AOC AQU Turf", "finish": 1, "beyer": 93, "track": "AQU", "e2_pace_figure": 88, "lp_figure": 88, "comment": ""}]},
+        {"name": "Distant Galaxy", "jockey": "J. Ortiz", "trainer": "C. DeVaux", "morning_line": "6-1", "career_best_beyer": 90, "final_2f_figure": 43, "jockey_trainer_win_pct": 0.17, "past_races": [{"date": "2026-06-07", "race_name": "Allowance Belmont Turf", "finish": 4, "beyer": 85, "track": "BEL", "e2_pace_figure": 86, "lp_figure": 84, "comment": "wide throughout"}]}
+      ]
+    },
+    {
+      "race": 5,
+      "name": "Caress Stakes",
+      "grade": "G2",
+      "distance_furlongs": 5.5,
+      "surface": "turf",
+      "purse": 250000,
+      "horses": [
+        {"name": "Zeitlos", "jockey": "J. Ortiz", "trainer": "S. Asmussen", "morning_line": "4-1", "career_best_beyer": 97, "final_2f_figure": 47, "jockey_trainer_win_pct": 0.21, "past_races": [{"date": "2026-06-21", "race_name": "Chicago G2 Churchill", "finish": 3, "beyer": 88, "track": "CD", "e2_pace_figure": 79, "lp_figure": 91, "comment": "closed steadily from off pace"}, {"date": "2025-08-09", "race_name": "Caress Stakes G2", "finish": 2, "beyer": 97, "track": "SAR", "e2_pace_figure": 80, "lp_figure": 95, "comment": "big late charge, just missed"}, {"date": "2025-09-27", "race_name": "Ladies Turf Sprint G2 KY Downs", "finish": 5, "beyer": 85, "track": "KD", "e2_pace_figure": 79, "lp_figure": 87, "comment": ""}]},
+        {"name": "Movin On Up", "jockey": "D. Davis", "trainer": "R. Rodriguez", "morning_line": "15-1", "career_best_beyer": 84, "final_2f_figure": 40, "jockey_trainer_win_pct": 0.10, "past_races": [{"date": "2026-06-15", "race_name": "Allowance Turf Belmont", "finish": 2, "beyer": 84, "track": "BEL", "e2_pace_figure": 86, "lp_figure": 83, "comment": ""}, {"date": "2026-05-10", "race_name": "Allowance Turf Churchill", "finish": 3, "beyer": 80, "track": "CD", "e2_pace_figure": 85, "lp_figure": 80, "comment": ""}]},
+        {"name": "Italian Soiree", "jockey": "D. Davis", "trainer": "J. Terranova", "morning_line": "7-2", "career_best_beyer": 97, "final_2f_figure": 47, "jockey_trainer_win_pct": 0.12, "past_races": [{"date": "2026-06-04", "race_name": "Intercontinental Stakes G2", "finish": 2, "beyer": 97, "track": "SAR", "e2_pace_figure": 92, "lp_figure": 90, "comment": "rallied to be second, no chance with winner"}, {"date": "2026-05-02", "race_name": "Distaff Turf Mile G2", "finish": 5, "beyer": 79, "track": "CD", "e2_pace_figure": 83, "lp_figure": 82, "comment": "off her distance, never involved"}, {"date": "2026-03-21", "race_name": "Allowance Turf Gulfstream", "finish": 1, "beyer": 91, "track": "GP", "e2_pace_figure": 91, "lp_figure": 89, "comment": ""}]},
+        {"name": "Sunna", "jockey": "L. Saez", "trainer": "K. Sweezey", "morning_line": "2-1", "career_best_beyer": 95, "final_2f_figure": 41, "jockey_trainer_win_pct": 0.15, "past_races": [{"date": "2026-05-30", "race_name": "Allowance Sprint Churchill Turf", "finish": 1, "beyer": 95, "track": "CD", "e2_pace_figure": 100, "lp_figure": 82, "comment": "led gate to wire, 22-45 fractions"}, {"date": "2026-04-11", "race_name": "Very One Stakes Laurel", "finish": 1, "beyer": 88, "track": "LRL", "e2_pace_figure": 99, "lp_figure": 80, "comment": "wire to wire, rated lead"}, {"date": "2026-03-07", "race_name": "Allowance Turf Gulfstream", "finish": 2, "beyer": 85, "track": "GP", "e2_pace_figure": 95, "lp_figure": 79, "comment": ""}]},
+        {"name": "Obstreperous", "jockey": "J. Rodriguez", "trainer": "M. Simone", "morning_line": "15-1", "career_best_beyer": 82, "final_2f_figure": 40, "jockey_trainer_win_pct": 0.09, "past_races": [{"date": "2026-06-01", "race_name": "Allowance Turf Belmont", "finish": 3, "beyer": 81, "track": "BEL", "e2_pace_figure": 83, "lp_figure": 83, "comment": ""}, {"date": "2026-05-01", "race_name": "Allowance Turf Aqueduct", "finish": 4, "beyer": 75, "track": "AQU", "e2_pace_figure": 80, "lp_figure": 78, "comment": ""}]},
+        {"name": "In Our Time", "jockey": "F. Prat", "trainer": "S. Joseph Jr.", "morning_line": "5-2", "career_best_beyer": 93, "final_2f_figure": 44, "jockey_trainer_win_pct": 0.22, "past_races": [{"date": "2026-06-07", "race_name": "Intercontinental G2 prep allowance", "finish": 1, "beyer": 91, "track": "CD", "e2_pace_figure": 90, "lp_figure": 86, "comment": "rated near lead, drew away"}, {"date": "2026-05-10", "race_name": "Allowance Turf Churchill", "finish": 2, "beyer": 88, "track": "CD", "e2_pace_figure": 88, "lp_figure": 85, "comment": ""}, {"date": "2026-04-04", "race_name": "Allowance Turf Gulfstream", "finish": 1, "beyer": 93, "track": "GP", "e2_pace_figure": 91, "lp_figure": 87, "comment": ""}]}
+      ]
+    },
+    {
+      "race": 6,
+      "name": "Maiden Special Weight (F 2yo)",
+      "grade": null,
+      "distance_furlongs": 5.5,
+      "surface": "dirt",
+      "purse": 115000,
+      "horses": [
+        {"name": "Call Me Rosie", "jockey": "J. Alvarado", "trainer": "B. Cox", "morning_line": "12-1", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.18, "past_races": []},
+        {"name": "Uptown Rosie", "jockey": "F. Prat", "trainer": "S. Asmussen", "morning_line": "6-1", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.21, "past_races": []},
+        {"name": "Beach Belle", "jockey": "I. Ortiz Jr.", "trainer": "T. Pletcher", "morning_line": "6-1", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.21, "past_races": []},
+        {"name": "Starlight Lady", "jockey": "L. Saez", "trainer": "C. McGaughey", "morning_line": "3-1", "career_best_beyer": 0, "final_2f_figure": 0, "jockey_trainer_win_pct": 0.17, "past_races": []}
+      ]
+    },
+    {
+      "race": 7,
+      "name": "Allowance Optional Claiming",
+      "grade": null,
+      "distance_furlongs": 8.0,
+      "surface": "turf",
+      "purse": 125000,
+      "horses": [
+        {"name": "Yinzer", "jockey": "L. Saez", "trainer": "C. Brown", "morning_line": "3-1", "career_best_beyer": 97, "final_2f_figure": 47, "jockey_trainer_win_pct": 0.22, "past_races": [{"date": "2026-06-14", "race_name": "Allowance Belmont Turf", "finish": 1, "beyer": 94, "track": "BEL", "e2_pace_figure": 88, "lp_figure": 92, "comment": "won going away"}, {"date": "2026-05-18", "race_name": "AOC Churchill Turf", "finish": 2, "beyer": 91, "track": "CD", "e2_pace_figure": 87, "lp_figure": 90, "comment": ""}, {"date": "2026-04-12", "race_name": "Allowance Keeneland Turf", "finish": 1, "beyer": 97, "track": "KEE", "e2_pace_figure": 89, "lp_figure": 93, "comment": ""}]},
+        {"name": "Hailey's Whim", "jockey": "J. Ortiz", "trainer": "T. Pletcher", "morning_line": "5-2", "career_best_beyer": 95, "final_2f_figure": 46, "jockey_trainer_win_pct": 0.21, "past_races": [{"date": "2026-06-21", "race_name": "Allowance Belmont Turf", "finish": 2, "beyer": 93, "track": "BEL", "e2_pace_figure": 89, "lp_figure": 91, "comment": ""}, {"date": "2026-05-23", "race_name": "AOC Churchill Turf", "finish": 1, "beyer": 95, "track": "CD", "e2_pace_figure": 90, "lp_figure": 92, "comment": ""}]},
+        {"name": "Copper Creek", "jockey": "M. Franco", "trainer": "J. Abreu", "morning_line": "6-1", "career_best_beyer": 90, "final_2f_figure": 43, "jockey_trainer_win_pct": 0.16, "past_races": [{"date": "2026-06-07", "race_name": "Allowance Belmont Turf", "finish": 3, "beyer": 88, "track": "BEL", "e2_pace_figure": 87, "lp_figure": 86, "comment": "checked in traffic mid-turn"}, {"date": "2026-05-10", "race_name": "AOC Aqueduct Turf", "finish": 2, "beyer": 90, "track": "AQU", "e2_pace_figure": 88, "lp_figure": 88, "comment": ""}]},
+        {"name": "Midnight Patrol", "jockey": "J. Alvarado", "trainer": "B. Mott", "morning_line": "9-2", "career_best_beyer": 92, "final_2f_figure": 44, "jockey_trainer_win_pct": 0.17, "past_races": [{"date": "2026-06-14", "race_name": "Allowance Belmont Turf", "finish": 4, "beyer": 85, "track": "BEL", "e2_pace_figure": 84, "lp_figure": 87, "comment": ""}, {"date": "2026-04-26", "race_name": "AOC Keeneland Turf", "finish": 1, "beyer": 92, "track": "KEE", "e2_pace_figure": 86, "lp_figure": 89, "comment": ""}, {"date": "2026-03-21", "race_name": "Allowance Gulfstream Turf", "finish": 2, "beyer": 89, "track": "GP", "e2_pace_figure": 85, "lp_figure": 88, "comment": ""}]}
+      ]
+    },
+    {
+      "race": 8,
+      "name": "Allowance (3yo F Turf)",
+      "grade": null,
+      "distance_furlongs": 8.5,
+      "surface": "turf",
+      "purse": 120000,
+      "horses": [
+        {"name": "Claret Beret", "jockey": "F. Prat", "trainer": "S. Joseph Jr.", "morning_line": "2-1", "career_best_beyer": 88, "final_2f_figure": 43, "jockey_trainer_win_pct": 0.22, "past_races": [{"date": "2026-06-21", "race_name": "Chicago G2 Churchill Turf", "finish": 2, "beyer": 88, "track": "CD", "e2_pace_figure": 85, "lp_figure": 86, "comment": ""}, {"date": "2026-05-10", "race_name": "Allowance Churchill Turf", "finish": 1, "beyer": 84, "track": "CD", "e2_pace_figure": 84, "lp_figure": 82, "comment": ""}]},
+        {"name": "Satin Run", "jockey": "J. Ortiz", "trainer": "C. Brown", "morning_line": "3-1", "career_best_beyer": 87, "final_2f_figure": 43, "jockey_trainer_win_pct": 0.23, "past_races": [{"date": "2026-06-14", "race_name": "Allowance Belmont Turf", "finish": 1, "beyer": 87, "track": "BEL", "e2_pace_figure": 84, "lp_figure": 85, "comment": ""}, {"date": "2026-05-18", "race_name": "Allowance Churchill Turf", "finish": 2, "beyer": 83, "track": "CD", "e2_pace_figure": 83, "lp_figure": 82, "comment": ""}]},
+        {"name": "Wren's Gift", "jockey": "I. Ortiz Jr.", "trainer": "T. Pletcher", "morning_line": "5-2", "career_best_beyer": 86, "final_2f_figure": 42, "jockey_trainer_win_pct": 0.21, "past_races": [{"date": "2026-06-28", "race_name": "Allowance Belmont Turf", "finish": 1, "beyer": 86, "track": "BEL", "e2_pace_figure": 85, "lp_figure": 84, "comment": ""}, {"date": "2026-06-07", "race_name": "Allowance Belmont Turf", "finish": 3, "beyer": 81, "track": "BEL", "e2_pace_figure": 83, "lp_figure": 80, "comment": "bumped early, wide stretch"}]},
+        {"name": "Aria Storm", "jockey": "L. Saez", "trainer": "T. Albertrani", "morning_line": "6-1", "career_best_beyer": 82, "final_2f_figure": 40, "jockey_trainer_win_pct": 0.13, "past_races": [{"date": "2026-06-07", "race_name": "Allowance Belmont Turf", "finish": 2, "beyer": 82, "track": "BEL", "e2_pace_figure": 83, "lp_figure": 80, "comment": ""}]}
+      ]
+    },
+    {
+      "race": 9,
+      "name": "Claiming ($25k)",
+      "grade": null,
+      "distance_furlongs": 6.0,
+      "surface": "dirt",
+      "purse": 45000,
+      "horses": [
+        {"name": "Iron Bolt", "jockey": "J. Alvarado", "trainer": "G. Weaver", "morning_line": "5-2", "career_best_beyer": 86, "final_2f_figure": 41, "jockey_trainer_win_pct": 0.18, "past_races": [{"date": "2026-06-20", "race_name": "Claiming $25k Belmont", "finish": 2, "beyer": 84, "track": "BEL", "e2_pace_figure": 88, "lp_figure": 83, "comment": ""}, {"date": "2026-06-06", "race_name": "Claiming $25k Belmont", "finish": 1, "beyer": 86, "track": "BEL", "e2_pace_figure": 89, "lp_figure": 83, "comment": ""}]},
+        {"name": "Fast Freddie", "jockey": "D. Davis", "trainer": "R. Rodriguez", "morning_line": "3-1", "career_best_beyer": 88, "final_2f_figure": 42, "jockey_trainer_win_pct": 0.12, "past_races": [{"date": "2026-06-13", "race_name": "Claiming $32k Belmont", "finish": 3, "beyer": 82, "track": "BEL", "e2_pace_figure": 87, "lp_figure": 81, "comment": "blocked in stretch"}, {"date": "2026-05-23", "race_name": "Claiming $25k Churchill", "finish": 1, "beyer": 88, "track": "CD", "e2_pace_figure": 90, "lp_figure": 83, "comment": ""}]},
+        {"name": "Night Hawk", "jockey": "M. Franco", "trainer": "J. Ryerson", "morning_line": "4-1", "career_best_beyer": 84, "final_2f_figure": 40, "jockey_trainer_win_pct": 0.14, "past_races": [{"date": "2026-06-27", "race_name": "Claiming $25k Saratoga", "finish": 1, "beyer": 84, "track": "SAR", "e2_pace_figure": 86, "lp_figure": 81, "comment": ""}, {"date": "2026-06-14", "race_name": "Claiming $20k Belmont", "finish": 2, "beyer": 81, "track": "BEL", "e2_pace_figure": 84, "lp_figure": 80, "comment": ""}]},
+        {"name": "Desert Sun", "jockey": "J. Ortiz", "trainer": "L. Rice", "morning_line": "9-2", "career_best_beyer": 85, "final_2f_figure": 40, "jockey_trainer_win_pct": 0.15, "past_races": [{"date": "2026-06-28", "race_name": "Claiming $25k Saratoga", "finish": 3, "beyer": 81, "track": "SAR", "e2_pace_figure": 85, "lp_figure": 79, "comment": ""}, {"date": "2026-06-14", "race_name": "Claiming $25k Belmont", "finish": 2, "beyer": 85, "track": "BEL", "e2_pace_figure": 86, "lp_figure": 81, "comment": ""}]}
+      ]
+    },
+    {
+      "race": 10,
+      "name": "Bowling Green Stakes",
+      "grade": "G2",
+      "distance_furlongs": 11.0,
+      "surface": "turf",
+      "purse": 250000,
+      "horses": [
+        {"name": "Ole Crazy Bone", "jockey": "F. Prat", "trainer": "M. Maker", "morning_line": "3-1", "career_best_beyer": 96, "final_2f_figure": 46, "jockey_trainer_win_pct": 0.24, "past_races": [{"date": "2026-05-03", "race_name": "Allowance Churchill Turf", "finish": 2, "beyer": 93, "track": "CD", "e2_pace_figure": 88, "lp_figure": 90, "comment": "pressed pace, no match for winner"}, {"date": "2025-09-06", "race_name": "Kentucky Turf Cup G2", "finish": 1, "beyer": 96, "track": "KD", "e2_pace_figure": 89, "lp_figure": 92, "comment": "took over in upper stretch, drew clear"}, {"date": "2025-08-02", "race_name": "Allowance Churchill Turf", "finish": 3, "beyer": 89, "track": "CD", "e2_pace_figure": 87, "lp_figure": 88, "comment": ""}]},
+        {"name": "Soleil Volant", "jockey": "T. Gaffalione", "trainer": "H. Motion", "morning_line": "6-1", "career_best_beyer": 95, "final_2f_figure": 44, "jockey_trainer_win_pct": 0.18, "past_races": [{"date": "2026-05-25", "race_name": "Dixie Stakes G3", "finish": 2, "beyer": 94, "track": "PIM", "e2_pace_figure": 90, "lp_figure": 88, "comment": ""}, {"date": "2026-03-07", "race_name": "Pan American Stakes G2", "finish": 1, "beyer": 95, "track": "GP", "e2_pace_figure": 91, "lp_figure": 87, "comment": "rated off pace, led at top of stretch"}, {"date": "2025-11-01", "race_name": "Longines Turf G1", "finish": 4, "beyer": 90, "track": "SAR", "e2_pace_figure": 90, "lp_figure": 85, "comment": ""}]},
+        {"name": "Desvio", "jockey": "I. Ortiz Jr.", "trainer": "T. Pletcher", "morning_line": "10-1", "career_best_beyer": 94, "final_2f_figure": 44, "jockey_trainer_win_pct": 0.21, "past_races": [{"date": "2026-05-18", "race_name": "Ft Lauderdale G2", "finish": 3, "beyer": 90, "track": "GP", "e2_pace_figure": 88, "lp_figure": 87, "comment": "wide into stretch, no room early"}, {"date": "2026-04-05", "race_name": "Pan American G2", "finish": 1, "beyer": 94, "track": "GP", "e2_pace_figure": 89, "lp_figure": 88, "comment": ""}, {"date": "2026-02-21", "race_name": "Allowance Gulfstream Turf", "finish": 1, "beyer": 91, "track": "GP", "e2_pace_figure": 88, "lp_figure": 87, "comment": ""}]},
+        {"name": "Fort George", "jockey": "K. Shoemark", "trainer": "E. Walker", "morning_line": "9-5", "career_best_beyer": 105, "final_2f_figure": 48, "jockey_trainer_win_pct": 0.10, "past_races": [{"date": "2026-03-28", "race_name": "Dubai Turf G1 (Meydan)", "finish": 9, "beyer": 96, "track": "MEY", "e2_pace_figure": 91, "lp_figure": 88, "comment": "failed to fire, flat effort in deep G1"}, {"date": "2026-02-28", "race_name": "Meydan Classic Group 2", "finish": 2, "beyer": 104, "track": "MEY", "e2_pace_figure": 92, "lp_figure": 96, "comment": "strong run, outstayed by Rebel's Romance"}, {"date": "2026-01-15", "race_name": "Dubai Millennium Stakes G3", "finish": 1, "beyer": 105, "track": "MEY", "e2_pace_figure": 92, "lp_figure": 95, "comment": "tracked pace, powered clear"}]},
+        {"name": "Carson's Run", "jockey": "J. Rosario", "trainer": "M. Clement", "morning_line": "8-1", "career_best_beyer": 103, "final_2f_figure": 47, "jockey_trainer_win_pct": 0.19, "past_races": [{"date": "2026-05-09", "race_name": "Allowance AQU Turf", "finish": 4, "beyer": 83, "track": "AQU", "e2_pace_figure": 76, "lp_figure": 84, "comment": "no rally today, looked dull"}, {"date": "2026-03-21", "race_name": "Allowance AQU Turf", "finish": 3, "beyer": 87, "track": "AQU", "e2_pace_figure": 78, "lp_figure": 87, "comment": ""}, {"date": "2024-11-02", "race_name": "Jamaica H G2", "finish": 2, "beyer": 96, "track": "AQU", "e2_pace_figure": 82, "lp_figure": 94, "comment": ""}]},
+        {"name": "Minaret Station", "jockey": "J. Ortiz", "trainer": "W. Walden", "morning_line": "7-2", "career_best_beyer": 90, "final_2f_figure": 46, "jockey_trainer_win_pct": 0.20, "past_races": [{"date": "2026-05-30", "race_name": "Arlington Stakes G3T", "finish": 2, "beyer": 90, "track": "AP", "e2_pace_figure": 74, "lp_figure": 93, "comment": "closed from 2nd-last, just missed"}, {"date": "2026-04-11", "race_name": "Opening Verse Stakes Churchill", "finish": 4, "beyer": 85, "track": "CD", "e2_pace_figure": 73, "lp_figure": 90, "comment": "closed from last, lacked room stretch"}, {"date": "2025-09-06", "race_name": "American Derby Churchill", "finish": 1, "beyer": 89, "track": "CD", "e2_pace_figure": 73, "lp_figure": 92, "comment": "swept from last to first"}]},
+        {"name": "Carcano", "jockey": "R. Santana Jr.", "trainer": "E. Cox", "morning_line": "20-1", "career_best_beyer": 87, "final_2f_figure": 42, "jockey_trainer_win_pct": 0.18, "past_races": [{"date": "2026-06-14", "race_name": "Allowance Belmont Turf", "finish": 2, "beyer": 87, "track": "BEL", "e2_pace_figure": 86, "lp_figure": 86, "comment": ""}, {"date": "2026-05-23", "race_name": "Allowance Churchill Turf", "finish": 3, "beyer": 83, "track": "CD", "e2_pace_figure": 85, "lp_figure": 83, "comment": ""}]}
+      ]
+    },
+    {
+      "race": 11,
+      "name": "Maiden Special Weight (NY-bred Turf)",
+      "grade": null,
+      "distance_furlongs": 8.5,
+      "surface": "turf",
+      "purse": 100000,
+      "horses": [
+        {"name": "Karsten", "jockey": "F. Prat", "trainer": "J. Abreu", "morning_line": "3-1", "career_best_beyer": 79, "final_2f_figure": 38, "jockey_trainer_win_pct": 0.18, "past_races": [{"date": "2026-06-21", "race_name": "MSW Belmont Turf NY-bred", "finish": 2, "beyer": 79, "track": "BEL", "e2_pace_figure": 82, "lp_figure": 78, "comment": ""}, {"date": "2026-05-18", "race_name": "MSW Aqueduct Turf NY-bred", "finish": 3, "beyer": 74, "track": "AQU", "e2_pace_figure": 80, "lp_figure": 74, "comment": ""}]},
+        {"name": "Before the Wind", "jockey": "J. Rodriguez", "trainer": "E. Merryman", "morning_line": "6-1", "career_best_beyer": 76, "final_2f_figure": 37, "jockey_trainer_win_pct": 0.12, "past_races": [{"date": "2026-06-28", "race_name": "MSW Saratoga Turf NY-bred", "finish": 3, "beyer": 76, "track": "SAR", "e2_pace_figure": 81, "lp_figure": 75, "comment": ""}]},
+        {"name": "Coach Ryan", "jockey": "M. Franco", "trainer": "C. Brown", "morning_line": "5-2", "career_best_beyer": 80, "final_2f_figure": 39, "jockey_trainer_win_pct": 0.23, "past_races": [{"date": "2026-07-04", "race_name": "MSW Saratoga Turf NY-bred", "finish": 2, "beyer": 80, "track": "SAR", "e2_pace_figure": 83, "lp_figure": 79, "comment": "stumbled gate, rallied well"}, {"date": "2026-06-14", "race_name": "MSW Belmont Turf NY-bred", "finish": 4, "beyer": 74, "track": "BEL", "e2_pace_figure": 80, "lp_figure": 73, "comment": ""}]},
+        {"name": "Hudson Flyer", "jockey": "L. Saez", "trainer": "R. Rodriguez", "morning_line": "8-1", "career_best_beyer": 77, "final_2f_figure": 37, "jockey_trainer_win_pct": 0.14, "past_races": [{"date": "2026-07-04", "race_name": "MSW Saratoga Turf NY-bred", "finish": 4, "beyer": 74, "track": "SAR", "e2_pace_figure": 80, "lp_figure": 73, "comment": ""}]},
+        {"name": "Saratoga Kid", "jockey": "I. Ortiz Jr.", "trainer": "T. Pletcher", "morning_line": "4-1", "career_best_beyer": 77, "final_2f_figure": 38, "jockey_trainer_win_pct": 0.21, "past_races": [{"date": "2026-06-28", "race_name": "MSW Saratoga Turf NY-bred", "finish": 2, "beyer": 77, "track": "SAR", "e2_pace_figure": 82, "lp_figure": 76, "comment": ""}, {"date": "2026-06-07", "race_name": "MSW Belmont Turf NY-bred", "finish": 3, "beyer": 73, "track": "BEL", "e2_pace_figure": 80, "lp_figure": 72, "comment": ""}]}
+      ]
+    }
+  ]
+}
