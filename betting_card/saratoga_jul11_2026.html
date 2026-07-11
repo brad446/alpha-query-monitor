@@ -6,37 +6,17 @@
 <title>Pittsburgh Phil | Saratoga Race Day Card | July 11, 2026</title>
 <style>
   :root {
-    --bg: #0d1b2a;
-    --card: #162032;
-    --border: #2a3f55;
-    --gold: #c9a84c;
-    --gold2: #e8c96d;
-    --text: #dce8f5;
-    --muted: #8fa8c0;
-    --green: #3dbe7a;
-    --red: #e05c5c;
-    --blue: #4a90d9;
-    --purple: #9b6dcc;
-    --orange: #e0883a;
-    --teal: #3dbebe;
-    --yellow: #d4be30;
+    --bg: #0d1b2a; --card: #162032; --border: #2a3f55; --gold: #c9a84c;
+    --gold2: #e8c96d; --text: #dce8f5; --muted: #8fa8c0; --green: #3dbe7a;
+    --red: #e05c5c; --blue: #4a90d9; --purple: #9b6dcc; --orange: #e0883a;
+    --teal: #3dbebe; --yellow: #d4be30;
   }
   @media (prefers-color-scheme: light) {
     :root {
-      --bg: #f4f7fb;
-      --card: #ffffff;
-      --border: #c8d8e8;
-      --gold: #9a6f1e;
-      --gold2: #b8860b;
-      --text: #1a2a3a;
-      --muted: #5a7080;
-      --green: #1e8a50;
-      --red: #c0392b;
-      --blue: #1a6ab0;
-      --purple: #6a3aaa;
-      --orange: #b05820;
-      --teal: #1a8a8a;
-      --yellow: #907810;
+      --bg: #f4f7fb; --card: #ffffff; --border: #c8d8e8; --gold: #9a6f1e;
+      --gold2: #b8860b; --text: #1a2a3a; --muted: #5a7080; --green: #1e8a50;
+      --red: #c0392b; --blue: #1a6ab0; --purple: #6a3aaa; --orange: #b05820;
+      --teal: #1a8a8a; --yellow: #907810;
     }
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,12 +40,14 @@
   .pace-NORMAL { background: #2a7a40; color: #fff; }
   .pace-CONTESTED { background: #b05820; color: #fff; }
   .pace-UNKNOWN { background: #5a7080; color: #fff; }
+  .pace-FIRM { background: #3dbebe; color: #000; }
   .horse-table { width: 100%; border-collapse: collapse; }
   .horse-table th { background: #0d1b2a; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--border); }
   .horse-table td { padding: 7px 10px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
   .horse-table tr:last-child td { border-bottom: none; }
   .horse-table tr:hover td { background: rgba(255,255,255,0.03); }
   .horse-table tr.top-pick td { background: rgba(201,168,76,0.08); }
+  .horse-table tr.scratched td { opacity: 0.45; text-decoration: line-through; }
   .pp-num { color: var(--muted); font-size: 12px; width: 28px; }
   .horse-name { font-weight: bold; }
   .jt { color: var(--muted); font-size: 11px; }
@@ -89,6 +71,7 @@
   .sig-TROUBLE { background: #e07820; color: #fff; }
   .sig-SOL { background: #6a3aaa; color: #fff; }
   .sig-SHARP { background: #1a6ab0; color: #fff; }
+  .sig-UNDERLAID { background: #c0392b; color: #fff; }
   .bets-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; padding: 12px; }
   .bet-ticket { border-radius: 6px; padding: 10px 12px; border-left: 4px solid; }
   .bet-WIN { border-color: var(--green); background: rgba(61,190,122,0.08); }
@@ -97,7 +80,6 @@
   .bet-SF { border-color: #e05c5c; background: rgba(224,92,92,0.08); }
   .bet-DD { border-color: var(--orange); background: rgba(224,136,58,0.08); }
   .bet-P3 { border-color: var(--yellow); background: rgba(212,190,48,0.08); }
-  .bet-PASS { border-color: var(--muted); background: rgba(90,112,128,0.06); }
   .bet-type-label { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
   .bet-horses { font-size: 14px; font-weight: bold; color: var(--text); margin: 2px 0; }
   .bet-detail { font-size: 12px; color: var(--muted); }
@@ -110,6 +92,7 @@
   .budget-table .total-row td { color: var(--gold); font-weight: bold; font-size: 15px; border-top: 2px solid var(--gold); border-bottom: none; }
   .model-note { background: rgba(201,168,76,0.06); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; margin: 10px 12px; font-size: 12px; color: var(--muted); line-height: 1.6; }
   .model-note strong { color: var(--gold); }
+  .warn-note { background: rgba(224,92,92,0.10); border: 1px solid #e05c5c; border-radius: 6px; padding: 8px 14px; margin: 8px 12px; font-size: 11px; color: #e05c5c; }
   .maxims-box { background: var(--card); border: 1px solid var(--gold); border-radius: 8px; padding: 14px; margin-bottom: 20px; }
   .maxims-box h3 { color: var(--gold); font-size: 14px; margin-bottom: 8px; }
   .maxim-list { list-style: none; }
@@ -129,17 +112,583 @@
 <body>
 
 <h1>Pittsburgh Phil Betting Card</h1>
-<div class="subtitle">Saratoga Race Course &nbsp;|&nbsp; Saturday, July 11, 2026 &nbsp;|&nbsp; First Post 12:35 PM ET</div>
+<div class="subtitle">Saratoga Race Course &nbsp;|&nbsp; Saturday, July 11, 2026 &nbsp;|&nbsp; First Post 12:35 PM ET &nbsp;|&nbsp; <strong style="color:#3dbebe;">FAST / FIRM TURF</strong></div>
 
 <div class="bankroll-header">
   <div class="bk-item"><div class="bk-label">Total Bankroll</div><div class="bk-val">$3,000</div></div>
-  <div class="bk-item"><div class="bk-label">Graded Stakes</div><div class="bk-val">$2,100</div></div>
-  <div class="bk-item"><div class="bk-label">Non-Stakes</div><div class="bk-val">$900</div></div>
-  <div class="bk-item"><div class="bk-label">Target</div><div class="bk-val">12 Races</div></div>
+  <div class="bk-item"><div class="bk-label">Graded Stakes</div><div class="bk-val">$1,764</div></div>
+  <div class="bk-item"><div class="bk-label">Non-Stakes</div><div class="bk-val">$930</div></div>
+  <div class="bk-item"><div class="bk-label">Deployed</div><div class="bk-val">$2,694</div></div>
+  <div class="bk-item"><div class="bk-label">Reserve</div><div class="bk-val">$306</div></div>
   <div class="bk-item"><div class="bk-label">Strategy</div><div class="bk-val" style="font-size:13px;">FULL KELLY</div></div>
 </div>
 
-<!-- See full HTML file in repository -->
+<!-- RACE 1 -->
+<div class="race-section">
+  <div class="race-header">
+    <span class="race-num">R1</span>
+    <span class="race-name">Maiden Special Weight (2yo)</span>
+    <span class="race-info">5.5f Dirt &nbsp;|&nbsp; $115K &nbsp;|&nbsp; 12:35 PM</span>
+    <span class="pace-badge pace-SLOW">SLOW</span>
+  </div>
+  <div class="pass-race">PASS — First-time starters, no past performance data. Pittsburgh Phil rule: never bet 2yo debut without a workout angle. Save capital for graded stakes.</div>
+</div>
+
+<!-- RACE 2 -->
+<div class="race-section">
+  <div class="race-header">
+    <span class="race-num">R2</span>
+    <span class="race-name">Maiden Special Weight (2yo Fillies)</span>
+    <span class="race-info">5.5f Dirt &nbsp;|&nbsp; $115K &nbsp;|&nbsp; 1:08 PM</span>
+    <span class="pace-badge pace-SLOW">SLOW</span>
+  </div>
+  <div class="pass-race">PASS — Debut fillies. No form data; Phil never chases guesswork in early 2yo races.</div>
+</div>
+
+<!-- RACE 3 -->
+<div class="race-section">
+  <div class="race-header">
+    <span class="race-num">R3</span>
+    <span class="race-name">Maiden Special Weight</span>
+    <span class="race-info">6f Dirt &nbsp;|&nbsp; $115K &nbsp;|&nbsp; 1:40 PM</span>
+    <span class="pace-badge pace-HOT">HOT</span>
+  </div>
+  <table class="horse-table">
+    <thead><tr><th>PP</th><th>Horse / Connections</th><th>ML</th><th>Model%</th><th>Edge</th><th>Style</th><th>Signals</th></tr></thead>
+    <tbody>
+      <tr class="top-pick">
+        <td class="pp-num">3</td>
+        <td><div class="horse-name">Road to Glory &#11088;</div><div class="jt">J. Alvarado / B. Mott</div></td>
+        <td class="ml-odds">9-2</td><td class="model-pct">56.1%</td><td class="edge-pos">+1.58</td>
+        <td><span class="pace-style ps-P">P</span></td>
+        <td><span class="signal sig-OVERLAY">OVERLAY</span><span class="signal sig-TROUBLE">TROUBLE LO</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">1</td>
+        <td><div class="horse-name">Speightful Lily</div><div class="jt">F. Prat / J. Abreu</div></td>
+        <td class="ml-odds">6-5</td><td class="model-pct">29.0%</td><td class="edge-neg">-0.47</td>
+        <td><span class="pace-style ps-P">P</span></td><td></td>
+      </tr>
+      <tr>
+        <td class="pp-num">2</td>
+        <td><div class="horse-name">Midnight Surge</div><div class="jt">L. Saez / C. McGaughey</div></td>
+        <td class="ml-odds">5-1</td><td class="model-pct">14.8%</td><td class="edge-neg">-0.38</td>
+        <td><span class="pace-style ps-E">E</span></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="model-note"><strong>Phil's Read:</strong> HOT pace — two pressers dueling gives <strong>Road to Glory</strong> the perfect setup. Bumped at the break last out, returned a solid 74 Beyer. Speightful Lily at 6-5 is 47% underlaid.</div>
+  <div class="bets-grid">
+    <div class="bet-ticket bet-WIN"><div class="bet-type-label">Win</div><div class="bet-horses">#3 Road to Glory</div><div class="bet-detail">9-2 | Edge +1.58 | Trouble last out</div><div class="bet-amount">$120</div><div class="bet-return">Returns $660 at 9-2</div></div>
+    <div class="bet-ticket bet-EX"><div class="bet-type-label">Exacta</div><div class="bet-horses">#3 over #2 &amp; #1</div><div class="bet-detail">Road to Glory on top</div><div class="bet-amount">$20 x 2 = $40</div><div class="bet-return">~$65-$120 if hits</div></div>
+  </div>
+  <div style="padding:4px 12px 10px;color:var(--muted);font-size:11px;">R3 Subtotal: <strong>$160</strong></div>
+</div>
+
+<!-- RACE 4 -->
+<div class="race-section">
+  <div class="race-header">
+    <span class="race-num">R4</span>
+    <span class="race-name">Allowance Optional Claiming (3yo+)</span>
+    <span class="race-info">8f Turf &nbsp;|&nbsp; $125K &nbsp;|&nbsp; 2:14 PM</span>
+    <span class="pace-badge pace-SLOW">SLOW</span><span class="pace-badge pace-FIRM" style="margin-left:4px;">FIRM</span>
+  </div>
+  <table class="horse-table">
+    <thead><tr><th>PP</th><th>Horse / Connections</th><th>ML</th><th>Model%</th><th>Edge</th><th>Style</th><th>Signals</th></tr></thead>
+    <tbody>
+      <tr class="top-pick">
+        <td class="pp-num">5</td>
+        <td><div class="horse-name">Distant Galaxy &#11088;</div><div class="jt">J. Ortiz / C. DeVaux</div></td>
+        <td class="ml-odds">6-1</td><td class="model-pct">29.3%</td><td class="edge-pos">+0.69</td>
+        <td><span class="pace-style ps-S">S</span></td>
+        <td><span class="signal sig-OVERLAY">OVERLAY</span><span class="signal sig-TROUBLE">TROUBLE LO</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">3</td>
+        <td><div class="horse-name">Life and Times</div><div class="jt">L. Saez / T. Pletcher</div></td>
+        <td class="ml-odds">7-2</td><td class="model-pct">23.4%</td><td class="edge-neg">-0.13</td>
+        <td><span class="pace-style ps-S">S</span></td><td></td>
+      </tr>
+      <tr>
+        <td class="pp-num">2</td>
+        <td><div class="horse-name">Alan Turing</div><div class="jt">T. Gaffalione / H. Motion</div></td>
+        <td class="ml-odds">10-1</td><td class="model-pct">13.8%</td><td class="edge-pos">+0.25</td>
+        <td><span class="pace-style ps-C">C</span></td>
+        <td><span class="signal sig-TROUBLE">TROUBLE LO</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">1</td>
+        <td><div class="horse-name">Sounds Like A Plan</div><div class="jt">J. Velazquez / C. Brown</div></td>
+        <td class="ml-odds">4-1</td><td class="model-pct">18.0%</td><td class="edge-neg">-0.26</td>
+        <td><span class="pace-style ps-S">S</span></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="model-note"><strong>Phil's Read:</strong> SLOW pace on firm turf — stalker <strong>Distant Galaxy</strong> was wide last out at 6-1, ideal setup. Fast/firm ground rewards tactical runners; Distant Galaxy's style suits perfectly. Life and Times ran career-best 96 Beyer, priced right at 7-2.</div>
+  <div class="bets-grid">
+    <div class="bet-ticket bet-WIN"><div class="bet-type-label">Win</div><div class="bet-horses">#5 Distant Galaxy</div><div class="bet-detail">6-1 | Edge +0.69 | Firm turf stalker</div><div class="bet-amount">$80</div><div class="bet-return">Returns $560 at 6-1</div></div>
+    <div class="bet-ticket bet-WIN"><div class="bet-type-label">Win — Saver</div><div class="bet-horses">#2 Alan Turing</div><div class="bet-detail">10-1 | Trouble last out | Motion turf</div><div class="bet-amount">$30</div><div class="bet-return">Returns $330 at 10-1</div></div>
+    <div class="bet-ticket bet-EX"><div class="bet-type-label">Exacta</div><div class="bet-horses">#5 over #2, #3</div><div class="bet-detail">Distant Galaxy on top</div><div class="bet-amount">$20 x 2 = $40</div><div class="bet-return">~$80-$160 if hits</div></div>
+  </div>
+  <div style="padding:4px 12px 10px;color:var(--muted);font-size:11px;">R4 Subtotal: <strong>$150</strong></div>
+</div>
+
+<!-- RACE 5 — CARESS STAKES G2 -->
+<div class="race-section">
+  <div class="race-header graded">
+    <span class="race-num">R5</span>
+    <span class="race-name">Caress Stakes</span>
+    <span class="grade-badge">G2</span>
+    <span class="race-info">5.5f Turf (F&amp;M 4+) &nbsp;|&nbsp; $250K &nbsp;|&nbsp; 2:47 PM</span>
+    <span class="pace-badge pace-NORMAL">NORMAL</span><span class="pace-badge pace-FIRM" style="margin-left:4px;">FIRM</span>
+  </div>
+  <table class="horse-table">
+    <thead><tr><th>PP</th><th>Horse / Connections</th><th>ML</th><th>Model%</th><th>Edge</th><th>Score</th><th>Style</th><th>Signals</th></tr></thead>
+    <tbody>
+      <tr class="top-pick">
+        <td class="pp-num">3</td>
+        <td><div class="horse-name">Italian Soiree &#11088;</div><div class="jt">D. Davis / J. Terranova</div></td>
+        <td class="ml-odds">7-2</td><td class="model-pct">22.0%</td><td class="edge-pos">+0.09</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:72%"></div></div><div class="score-val">72</div></div></td>
+        <td><span class="pace-style ps-S">S</span></td>
+        <td><span class="signal sig-OVERLAY">FORM ↑</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">1</td>
+        <td><div class="horse-name">Zeitlos</div><div class="jt">J. Ortiz / S. Asmussen</div></td>
+        <td class="ml-odds">4-1</td><td class="model-pct">22.7%</td><td class="edge-pos">+0.32</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:68%"></div></div><div class="score-val">68</div></div></td>
+        <td><span class="pace-style ps-C">C</span></td>
+        <td><span class="signal sig-SOL">2ND-OFF-LAY</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">6</td>
+        <td><div class="horse-name">In Our Time</div><div class="jt">F. Prat / S. Joseph Jr.</div></td>
+        <td class="ml-odds">5-2</td><td class="model-pct">22.3%</td><td class="edge-neg">-0.09</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:67%"></div></div><div class="score-val">67</div></div></td>
+        <td><span class="pace-style ps-P">P</span></td>
+        <td><span class="signal sig-SHARP">SHARP COMBO</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">4</td>
+        <td><div class="horse-name">Sunna</div><div class="jt">L. Saez / K. Sweezey</div></td>
+        <td class="ml-odds">2-1</td><td class="model-pct">12.7%</td><td class="edge-neg">-0.56</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:42%"></div></div><div class="score-val">42</div></div></td>
+        <td><span class="pace-style ps-E">E</span></td><td></td>
+      </tr>
+      <tr>
+        <td class="pp-num">5</td>
+        <td><div class="horse-name">Obstreperous</div><div class="jt">J. Rodriguez / M. Simone</div></td>
+        <td class="ml-odds">15-1</td><td class="model-pct">8.4%</td><td class="edge-pos">+0.57</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:28%"></div></div><div class="score-val">28</div></div></td>
+        <td><span class="pace-style ps-S">S</span></td><td></td>
+      </tr>
+      <tr>
+        <td class="pp-num">2</td>
+        <td><div class="horse-name">Movin' On Up</div><div class="jt">D. Davis / R. Rodriguez</div></td>
+        <td class="ml-odds">15-1</td><td class="model-pct">12.0%</td><td class="edge-neg">-0.07</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:25%"></div></div><div class="score-val">25</div></div></td>
+        <td><span class="pace-style ps-P">P</span></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="model-note">
+    <strong>Phil's Read — Caress Stakes:</strong> NORMAL pace on FIRM 5.5f turf. <strong>Italian Soiree</strong> (#3, 7-2) earned career-best 97 Beyer 37 days ago — just outside bounce window — and is UNDEFEATED at exactly this distance on turf. Fast/firm suits her sustained stalking style. At 7-2, edge is modest but real.
+    <br><br><strong>Sunna</strong> (2-1 ML) is 56% underlaid. Wire-to-wire speed on firm going who set 22-45 fractions — she'll be challenged early by In Our Time. Phil never bets underlaid favorites. <strong>Zeitlos</strong> (4-1) closed hard last out and ran second in this exact race in 2025. +0.32 edge. She's the win saver.
+  </div>
+  <div class="section-header">Bet Tickets — Race 5 Caress Stakes (Budget: $700)</div>
+  <div class="bets-grid">
+    <div class="bet-ticket bet-WIN"><div class="bet-type-label">Win — Primary</div><div class="bet-horses">#3 Italian Soiree</div><div class="bet-detail">Career-best 97 Beyer | Optimal 5.5f | 7-2</div><div class="bet-amount">$200</div><div class="bet-return">Returns $900 at 7-2</div></div>
+    <div class="bet-ticket bet-WIN"><div class="bet-type-label">Win — Saver</div><div class="bet-horses">#1 Zeitlos</div><div class="bet-detail">2nd in this race 2025 | +0.32 edge | 4-1</div><div class="bet-amount">$100</div><div class="bet-return">Returns $500 at 4-1</div></div>
+    <div class="bet-ticket bet-EX"><div class="bet-type-label">Exacta — Key</div><div class="bet-horses">#3 → #1</div><div class="bet-detail">Italian Soiree over Zeitlos</div><div class="bet-amount">$60</div><div class="bet-return">~$280-$400 projected</div></div>
+    <div class="bet-ticket bet-EX"><div class="bet-type-label">Exacta</div><div class="bet-horses">#3 → #6 &amp; #1 → #6</div><div class="bet-detail">Both picks over In Our Time</div><div class="bet-amount">$30 x 2 = $60</div><div class="bet-return">~$150-$220 projected</div></div>
+    <div class="bet-ticket bet-EX"><div class="bet-type-label">Exacta — Reverse</div><div class="bet-horses">#1 → #3 &amp; #6</div><div class="bet-detail">Zeitlos on top saver</div><div class="bet-amount">$25 x 2 = $50</div><div class="bet-return">~$120-$200 projected</div></div>
+    <div class="bet-ticket bet-TRI"><div class="bet-type-label">Trifecta — Key</div><div class="bet-horses">#3 / #1 / #6</div><div class="bet-detail">Italian Soiree, Zeitlos, In Our Time</div><div class="bet-amount">$30 x 2 = $60</div><div class="bet-return">~$400-$800 projected</div></div>
+    <div class="bet-ticket bet-TRI"><div class="bet-type-label">Trifecta — Part Wheel</div><div class="bet-horses">#3 → ALL → #1, #6</div><div class="bet-detail">Italian on top, anything 2nd, top 2 third</div><div class="bet-amount">$10 x 8 = $80</div><div class="bet-return">~$300-$600 projected</div></div>
+    <div class="bet-ticket bet-SF"><div class="bet-type-label">Superfecta — Box</div><div class="bet-horses">#1, #3, #6, #5</div><div class="bet-detail">Top 4 any order</div><div class="bet-amount">$1 x 24 = $24</div><div class="bet-return">~$800-$3,000 if hits</div></div>
+    <div class="bet-ticket bet-DD"><div class="bet-type-label">Daily Double → R10</div><div class="bet-horses">#3, #1 → R10 top picks</div><div class="bet-detail">Link Caress winner to Bowling Green</div><div class="bet-amount">See R10 cross-race</div><div class="bet-return">Sequenced below</div></div>
+  </div>
+  <div style="padding:4px 12px 10px;color:var(--muted);font-size:11px;">R5 Subtotal: <strong>$700</strong> (DD cost included in R10)</div>
+</div>
+
+<!-- RACE 6 -->
+<div class="race-section">
+  <div class="race-header">
+    <span class="race-num">R6</span>
+    <span class="race-name">Maiden Special Weight (2yo Fillies)</span>
+    <span class="race-info">5.5f Dirt &nbsp;|&nbsp; $115K &nbsp;|&nbsp; 3:20 PM</span>
+    <span class="pace-badge pace-SLOW">SLOW</span>
+  </div>
+  <div class="pass-race">PASS — Debut 2yo fillies. Zero past race data. Phil waits for a second start with a workout pattern.</div>
+</div>
+
+<!-- RACE 7 -->
+<div class="race-section">
+  <div class="race-header">
+    <span class="race-num">R7</span>
+    <span class="race-name">Allowance Optional Claiming (3yo+)</span>
+    <span class="race-info">8f Turf &nbsp;|&nbsp; $125K &nbsp;|&nbsp; 3:52 PM</span>
+    <span class="pace-badge pace-SLOW">SLOW</span><span class="pace-badge pace-FIRM" style="margin-left:4px;">FIRM</span>
+  </div>
+  <table class="horse-table">
+    <thead><tr><th>PP</th><th>Horse / Connections</th><th>ML</th><th>Model%</th><th>Edge</th><th>Style</th><th>Signals</th></tr></thead>
+    <tbody>
+      <tr class="top-pick">
+        <td class="pp-num">3</td>
+        <td><div class="horse-name">Copper Creek &#11088;</div><div class="jt">M. Franco / J. Abreu</div></td>
+        <td class="ml-odds">6-1</td><td class="model-pct">43.1%</td><td class="edge-pos">+1.60</td>
+        <td><span class="pace-style ps-S">S</span></td>
+        <td><span class="signal sig-OVERLAY">OVERLAY</span><span class="signal sig-TROUBLE">TROUBLE LO</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">2</td>
+        <td><div class="horse-name">Hailey's Whim</div><div class="jt">J. Ortiz / T. Pletcher</div></td>
+        <td class="ml-odds">5-2</td><td class="model-pct">29.8%</td><td class="edge-neg">-0.10</td>
+        <td><span class="pace-style ps-S">S</span></td><td></td>
+      </tr>
+      <tr>
+        <td class="pp-num">1</td>
+        <td><div class="horse-name">Yinzer</div><div class="jt">L. Saez / C. Brown</div></td>
+        <td class="ml-odds">3-1</td><td class="model-pct">18.7%</td><td class="edge-neg">-0.36</td>
+        <td><span class="pace-style ps-C">C</span></td><td></td>
+      </tr>
+      <tr>
+        <td class="pp-num">4</td>
+        <td><div class="horse-name">Midnight Patrol</div><div class="jt">J. Alvarado / B. Mott</div></td>
+        <td class="ml-odds">9-2</td><td class="model-pct">8.4%</td><td class="edge-neg">-0.60</td>
+        <td><span class="pace-style ps-C">C</span></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="model-note"><strong>Phil's Read:</strong> SLOW pace, 1m firm turf. <strong>Copper Creek</strong> — checked in traffic mid-turn last out, +1.60 edge at 6-1. SLOW firm pace is ideal for a tactical stalker. Yinzer (3-1) is underlaid per the model despite Brown barn credentials.</div>
+  <div class="bets-grid">
+    <div class="bet-ticket bet-WIN"><div class="bet-type-label">Win — Primary</div><div class="bet-horses">#3 Copper Creek</div><div class="bet-detail">6-1 | Edge +1.60 | Trouble last out | Firm turf stalker</div><div class="bet-amount">$130</div><div class="bet-return">Returns $910 at 6-1</div></div>
+    <div class="bet-ticket bet-EX"><div class="bet-type-label">Exacta</div><div class="bet-horses">#3 → #2 &amp; #1</div><div class="bet-detail">Copper Creek on top</div><div class="bet-amount">$25 x 2 = $50</div><div class="bet-return">~$160-$340 projected</div></div>
+  </div>
+  <div style="padding:4px 12px 10px;color:var(--muted);font-size:11px;">R7 Subtotal: <strong>$180</strong></div>
+</div>
+
+<!-- RACE 8 -->
+<div class="race-section">
+  <div class="race-header">
+    <span class="race-num">R8</span>
+    <span class="race-name">Allowance (3yo Fillies Turf)</span>
+    <span class="race-info">8.5f Turf &nbsp;|&nbsp; $120K &nbsp;|&nbsp; 4:25 PM</span>
+    <span class="pace-badge pace-SLOW">SLOW</span><span class="pace-badge pace-FIRM" style="margin-left:4px;">FIRM</span>
+  </div>
+  <div class="warn-note">&#9888; ENTRIES NOT CONFIRMED via NYRA — the horses listed below could not be verified against the official program. Race 8 was at 0MTP as of 4:37 PM and may have already run. Treat any R8 bets as void/unverified.</div>
+  <div class="pass-race">Analysis based on unverified entries. PASS on this race — do not bet R8 without confirmed program entries.</div>
+</div>
+
+<!-- RACE 9 -->
+<div class="race-section">
+  <div class="race-header">
+    <span class="race-num">R9</span>
+    <span class="race-name">Allowance Optional Claiming (N3X)</span>
+    <span class="race-info">Turf &nbsp;|&nbsp; ~5:10 PM</span>
+    <span class="pace-badge pace-UNKNOWN">CONN. READ</span><span class="pace-badge pace-FIRM" style="margin-left:4px;">FIRM</span>
+  </div>
+  <table class="horse-table">
+    <thead><tr><th>PP</th><th>Horse / Connections</th><th>ML</th><th>Signal</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr class="top-pick">
+        <td class="pp-num">7</td>
+        <td><div class="horse-name">Judge Boushay &#11088;</div><div class="jt">M. Franco / C. Brown</div></td>
+        <td class="ml-odds">3-1</td>
+        <td><span class="signal sig-OVERLAY">VALUE</span></td>
+        <td style="font-size:12px;">Brown dominates Saratoga turf; Franco top rider at meet</td>
+      </tr>
+      <tr>
+        <td class="pp-num">2</td>
+        <td><div class="horse-name">Tricky Business</div><div class="jt">F. Prat / G. Weaver</div></td>
+        <td class="ml-odds">2-1</td>
+        <td></td>
+        <td style="font-size:12px;">Market fave; Weaver turf specialist, Prat elite — never fade this combo</td>
+      </tr>
+      <tr>
+        <td class="pp-num">4</td>
+        <td><div class="horse-name">Toscano</div><div class="jt">T. Gaffalione / M. Maker</div></td>
+        <td class="ml-odds">5-2</td>
+        <td></td>
+        <td style="font-size:12px;">Solid barn/rider; priced right at 5-2</td>
+      </tr>
+      <tr>
+        <td class="pp-num">6</td>
+        <td><div class="horse-name">Sunday Boy</div><div class="jt">J.L. Ortiz / J. Ryerson</div></td>
+        <td class="ml-odds">6-1</td>
+        <td><span class="signal sig-OVERLAY">PRICE</span></td>
+        <td style="font-size:12px;">JL Ortiz dangerous at any price; Ryerson occasionally fires at Saratoga</td>
+      </tr>
+      <tr>
+        <td class="pp-num">5</td>
+        <td><div class="horse-name">King Farro</div><div class="jt">D. Davis / R. Falcone Jr.</div></td>
+        <td class="ml-odds">6-1</td>
+        <td></td>
+        <td style="font-size:12px;">Smaller barn; lesser angle</td>
+      </tr>
+      <tr>
+        <td class="pp-num">1</td>
+        <td><div class="horse-name">Az U Chase Me</div><div class="jt">S. Fret / S. Torelli</div></td>
+        <td class="ml-odds">20-1</td>
+        <td></td>
+        <td style="font-size:12px;">Minor connections; throwout</td>
+      </tr>
+      <tr class="scratched">
+        <td class="pp-num">3</td>
+        <td><div class="horse-name">Hey Toby</div><div class="jt">J. Rodriguez / J. Englehart</div></td>
+        <td class="ml-odds" style="color:var(--red);text-decoration:none;">SCR</td>
+        <td></td>
+        <td style="font-size:12px;">Scratched</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="model-note">
+    <strong>Phil's Read — Connections-Based (No PP Data Available):</strong> Pittsburgh Phil's rule when form is unavailable: <em>bet the connections</em>. <strong>Judge Boushay</strong> (#7, 3-1, Franco / Chad Brown) is the play. Brown is the undisputed king of Saratoga turf — dominant win percentage at this meet year after year. Manuel Franco is among the top 3 riders at this meet. At 3-1 with these connections, there is real overlay versus the 2-1 Prat/Weaver horse.
+    <br><br>
+    <strong>Tricky Business</strong> (#2, 2-1, Prat / George Weaver) is the sharp second-choice — Weaver is a legitimate turf specialist and Prat converts at an elite clip. Phil never fades Prat on turf, but 2-1 demands caution. <strong>FAST/FIRM NOTE:</strong> Firm turf rewards horses that sit close and sustain over horses that need a pace collapse. Both top picks fit this profile over the deeper closers in this field.
+  </div>
+  <div class="bets-grid">
+    <div class="bet-ticket bet-WIN"><div class="bet-type-label">Win — Primary</div><div class="bet-horses">#7 Judge Boushay</div><div class="bet-detail">3-1 ML | Brown/Franco | Value vs 2-1 market fave</div><div class="bet-amount">$70</div><div class="bet-return">Returns $280 at 3-1</div></div>
+    <div class="bet-ticket bet-WIN"><div class="bet-type-label">Win — Saver</div><div class="bet-horses">#2 Tricky Business</div><div class="bet-detail">2-1 ML | Prat/Weaver turf | Never fade this combo</div><div class="bet-amount">$30</div><div class="bet-return">Returns $90 at 2-1</div></div>
+    <div class="bet-ticket bet-EX"><div class="bet-type-label">Exacta</div><div class="bet-horses">#7 → #2, #4</div><div class="bet-detail">Judge Boushay on top, two savers under</div><div class="bet-amount">$20 x 2 = $40</div><div class="bet-return">~$100-$180 projected</div></div>
+  </div>
+  <div style="padding:4px 12px 10px;color:var(--muted);font-size:11px;">R9 Subtotal: <strong>$140</strong></div>
+</div>
+
+<!-- RACE 10 — BOWLING GREEN STAKES G2 -->
+<div class="race-section">
+  <div class="race-header graded">
+    <span class="race-num">R10</span>
+    <span class="race-name">Bowling Green Stakes</span>
+    <span class="grade-badge">G2</span>
+    <span class="race-info">1-3/8m Inner Turf (4+) &nbsp;|&nbsp; $250K &nbsp;|&nbsp; ~5:45 PM</span>
+    <span class="pace-badge pace-SLOW">SLOW</span>
+    <span class="pace-badge pace-FIRM" style="margin-left:4px;">FIRM</span>
+  </div>
+  <table class="horse-table">
+    <thead><tr><th>PP</th><th>Horse / Connections</th><th>ML</th><th>Model%</th><th>Edge</th><th>Score</th><th>Style</th><th>Signals</th></tr></thead>
+    <tbody>
+      <tr class="top-pick">
+        <td class="pp-num">2</td>
+        <td><div class="horse-name">Soleil Volant &#11088; &#128176;</div><div class="jt">T. Gaffalione / H. Motion</div></td>
+        <td class="ml-odds">12-1</td><td class="model-pct">26.2%</td><td class="edge-pos">+3.23</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:84%"></div></div><div class="score-val">84</div></div></td>
+        <td><span class="pace-style ps-P">P</span></td>
+        <td><span class="signal sig-OVERLAY">MASSIVE +3.23</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">3</td>
+        <td><div class="horse-name">Desvio</div><div class="jt">J. Velazquez / M. Meyers</div></td>
+        <td class="ml-odds">12-1</td><td class="model-pct">18.4%</td><td class="edge-pos">+1.97</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:65%"></div></div><div class="score-val">65</div></div></td>
+        <td><span class="pace-style ps-S">S</span></td>
+        <td><span class="signal sig-OVERLAY">OVERLAY</span><span class="signal sig-TROUBLE">WIDE LO</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">1</td>
+        <td><div class="horse-name">Ole Crazy Bone</div><div class="jt">F. Prat / M. Maker</div></td>
+        <td class="ml-odds">5-2</td><td class="model-pct">22.1%</td><td class="edge-pos">+0.06</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:70%"></div></div><div class="score-val">70</div></div></td>
+        <td><span class="pace-style ps-S">S</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="pp-num">5</td>
+        <td><div class="horse-name">Carson's Run</div><div class="jt">J. Rosario / M. Clement</div></td>
+        <td class="ml-odds">10-1</td><td class="model-pct">10.1%</td><td class="edge-pos">+0.35</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:38%"></div></div><div class="score-val">38</div></div></td>
+        <td><span class="pace-style ps-C">C</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="pp-num">4</td>
+        <td><div class="horse-name">Fort George (GB)</div><div class="jt">K. Shoemark / E. Walker</div></td>
+        <td class="ml-odds">9-5</td><td class="model-pct">16.0%</td><td class="edge-neg">-0.45</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:48%"></div></div><div class="score-val">48</div></div></td>
+        <td><span class="pace-style ps-S">S</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="pp-num">6</td>
+        <td><div class="horse-name">Minaret Station</div><div class="jt">J. Ortiz / W. Walden</div></td>
+        <td class="ml-odds">2-1</td><td class="model-pct">7.2%</td><td class="edge-neg">-0.74</td>
+        <td><div class="score-bar-wrap"><div class="score-bar-bg"><div class="score-bar-fill" style="width:22%"></div></div><div class="score-val">22</div></div></td>
+        <td><span class="pace-style ps-C">C</span></td>
+        <td><span class="signal sig-UNDERLAID" style="background:#c0392b;color:#fff;">UNDERLAID -74%</span></td>
+      </tr>
+      <tr class="scratched">
+        <td class="pp-num">7</td>
+        <td><div class="horse-name">Carcano</div><div class="jt">R. Santana Jr. / E. Cox</div></td>
+        <td class="ml-odds" style="color:var(--red);text-decoration:none;">SCR</td>
+        <td>—</td><td>—</td><td>—</td><td>—</td><td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="model-note">
+    <strong>Phil's Read — Bowling Green G2 (6 runners after Carcano scratch | FIRM TURF | SLOW pace):</strong>
+    <br><br>
+    This is the clearest overlay bet on the card and one of the strongest signals in the Pittsburgh Phil model all day. <strong>Soleil Volant (#2, 12-1, Gaffalione / H. Graham Motion)</strong> drifted from a projected 6-1 to 12-1 while the model holds him at 26.2% win probability — a +3.23 edge. He WON the Pan American G2 at 11 furlongs at Gulfstream, pressing the pace and leading at the top of the stretch. H. Graham Motion is masterful with turf routers at Saratoga. On FIRM going at 1-3/8 miles, a presser who can sustain a long run is the ideal profile. The market is not giving him proper credit.
+    <br><br>
+    <strong>FAST/FIRM TRACK BIAS — CRITICAL:</strong> On firm turf at 11 furlongs, the pace does not collapse the way it does on soft or yielding ground. This directly penalizes deep closers. <strong>Minaret Station</strong> (2-1 FAVORITE, Closer style) has NEVER run at 1-3/8 miles, will be coming from last position in a SLOW pace, on ground where closers cannot get the momentum to sweep the field. The model gives him 7.2% win probability vs the market's 27.3% implied — that is a 74% underlaid favorite. Phil's rule: the most dangerous bet in racing is the underlaid favorite on firm ground at an unfamiliar distance. Minaret Station checks all three boxes.
+    <br><br>
+    <strong>Fort George (GB, 9-5)</strong> is also underlaid (-0.45). First US start, 3.5 months since Dubai where he ran 9th in a flat effort. Ed Walker has zero US track record. Phil never trusts international invaders at short prices without a US line.
+    <br><br>
+    <strong>Desvio (#3, 12-1, Velazquez / Madison Meyers)</strong> — Won the Pan American G2 in April, was wide into the stretch last out (traffic trouble), now gets Velazquez aboard. +1.97 edge at 12-1. A legitimate second overlay in the same race. <strong>Ole Crazy Bone (#1, 5/2, Prat / Maker)</strong> — Won the Kentucky Turf Cup G2 at this distance, Prat is elite. About fair price; use as saver only.
+  </div>
+  <div class="section-header">Bet Tickets — Race 10 Bowling Green G2 (Budget: $964)</div>
+  <div class="bets-grid">
+    <div class="bet-ticket bet-WIN">
+      <div class="bet-type-label">Win — PRIME PLAY OF THE DAY</div>
+      <div class="bet-horses">#2 Soleil Volant</div>
+      <div class="bet-detail">12-1 ML | Edge +3.23 | Proven 11f winner | Presser on FIRM | Motion turf master</div>
+      <div class="bet-amount">$500</div>
+      <div class="bet-return">Returns $6,500 at 12-1</div>
+    </div>
+    <div class="bet-ticket bet-WIN">
+      <div class="bet-type-label">Win — Secondary Overlay</div>
+      <div class="bet-horses">#3 Desvio</div>
+      <div class="bet-detail">12-1 ML | Edge +1.97 | Wide trouble last out | Velazquez up</div>
+      <div class="bet-amount">$80</div>
+      <div class="bet-return">Returns $1,040 at 12-1</div>
+    </div>
+    <div class="bet-ticket bet-WIN">
+      <div class="bet-type-label">Win — Saver</div>
+      <div class="bet-horses">#1 Ole Crazy Bone</div>
+      <div class="bet-detail">5/2 ML | G2 winner at this distance | Prat up</div>
+      <div class="bet-amount">$60</div>
+      <div class="bet-return">Returns $210 at 5/2</div>
+    </div>
+    <div class="bet-ticket bet-EX">
+      <div class="bet-type-label">Exacta — Key</div>
+      <div class="bet-horses">#2 → #3, #1, #4</div>
+      <div class="bet-detail">Soleil Volant on top, three underneath</div>
+      <div class="bet-amount">$40 x 3 = $120</div>
+      <div class="bet-return">~$400-$4,000 range</div>
+    </div>
+    <div class="bet-ticket bet-EX">
+      <div class="bet-type-label">Exacta — Reverse</div>
+      <div class="bet-horses">#3 → #2, #1</div>
+      <div class="bet-detail">Desvio on top if he closes</div>
+      <div class="bet-amount">$30 x 2 = $60</div>
+      <div class="bet-return">~$600-$1,500 if hits</div>
+    </div>
+    <div class="bet-ticket bet-TRI">
+      <div class="bet-type-label">Trifecta — Key</div>
+      <div class="bet-horses">#2 / #3, #1 / #3, #1, #4</div>
+      <div class="bet-detail">Soleil Volant 1st, Desvio or OCB 2nd, three options 3rd</div>
+      <div class="bet-amount">$20 x 6 = $120</div>
+      <div class="bet-return">~$1,000-$8,000 projected</div>
+    </div>
+    <div class="bet-ticket bet-SF">
+      <div class="bet-type-label">Superfecta — Box</div>
+      <div class="bet-horses">#1, #2, #3, #4</div>
+      <div class="bet-detail">Top 4 any order (6-horse field = good coverage)</div>
+      <div class="bet-amount">$1 x 24 = $24</div>
+      <div class="bet-return">~$2,000-$20,000 if hits</div>
+    </div>
+  </div>
+  <div class="section-header">Cross-Race Sequences</div>
+  <div class="bets-grid">
+    <div class="bet-ticket bet-DD">
+      <div class="bet-type-label">Daily Double R9 → R10</div>
+      <div class="bet-horses">#7, #2 (R9) → #2, #3 (R10)</div>
+      <div class="bet-detail">Judge Boushay or Tricky Business → Soleil Volant or Desvio</div>
+      <div class="bet-amount">$25 x 4 = $100</div>
+      <div class="bet-return">~$500-$10,000 if hits</div>
+    </div>
+  </div>
+  <div style="padding:4px 12px 10px;color:var(--muted);font-size:11px;">R10 Subtotal (incl. cross-race): <strong>$964</strong></div>
+</div>
+
+<!-- RACE 11 -->
+<div class="race-section">
+  <div class="race-header">
+    <span class="race-num">R11</span>
+    <span class="race-name">Maiden Special Weight (NY-Bred Turf)</span>
+    <span class="race-info">8.5f Turf &nbsp;|&nbsp; $100K &nbsp;|&nbsp; 6:15 PM</span>
+    <span class="pace-badge pace-HOT">HOT</span><span class="pace-badge pace-FIRM" style="margin-left:4px;">FIRM</span>
+  </div>
+  <table class="horse-table">
+    <thead><tr><th>PP</th><th>Horse / Connections</th><th>ML</th><th>Model%</th><th>Edge</th><th>Style</th><th>Signals</th></tr></thead>
+    <tbody>
+      <tr class="top-pick">
+        <td class="pp-num">1</td>
+        <td><div class="horse-name">Karsten &#11088;</div><div class="jt">F. Prat / J. Abreu</div></td>
+        <td class="ml-odds">3-1</td><td class="model-pct">40.3%</td><td class="edge-pos">+0.60</td>
+        <td><span class="pace-style ps-P">P</span></td>
+        <td><span class="signal sig-OVERLAY">OVERLAY</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">3</td>
+        <td><div class="horse-name">Coach Ryan</div><div class="jt">M. Franco / C. Brown</div></td>
+        <td class="ml-odds">5-2</td><td class="model-pct">24.4%</td><td class="edge-neg">-0.16</td>
+        <td><span class="pace-style ps-P">P</span></td>
+        <td><span class="signal sig-TROUBLE">TROUBLE LO</span></td>
+      </tr>
+      <tr>
+        <td class="pp-num">5</td>
+        <td><div class="horse-name">Saratoga Kid</div><div class="jt">I. Ortiz Jr. / T. Pletcher</div></td>
+        <td class="ml-odds">4-1</td><td class="model-pct">12.4%</td><td class="edge-neg">-0.38</td>
+        <td><span class="pace-style ps-P">P</span></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="model-note"><strong>Phil's Read:</strong> HOT pace in NY-bred turf maiden. <strong>Karsten</strong> (Prat/Abreu) has run back-to-back consistent figures (74, 79 Beyer) closing on the leader each start. HOT pace + firm turf = pressers who sit second get a perfect setup. +0.60 edge at 3-1.</div>
+  <div class="bets-grid">
+    <div class="bet-ticket bet-WIN"><div class="bet-type-label">Win</div><div class="bet-horses">#1 Karsten</div><div class="bet-detail">3-1 ML | Edge +0.60 | HOT pace presser | Prat up</div><div class="bet-amount">$80</div><div class="bet-return">Returns $320 at 3-1</div></div>
+    <div class="bet-ticket bet-EX"><div class="bet-type-label">Exacta</div><div class="bet-horses">#1 → #3, #5</div><div class="bet-detail">Karsten on top</div><div class="bet-amount">$25 x 2 = $50</div><div class="bet-return">~$100-$200 projected</div></div>
+  </div>
+  <div style="padding:4px 12px 10px;color:var(--muted);font-size:11px;">R11 Subtotal: <strong>$130</strong></div>
+</div>
+
+<!-- BUDGET SUMMARY -->
+<div class="race-section">
+  <div class="race-header">
+    <span class="race-num" style="background:var(--teal)">$$$</span>
+    <span class="race-name">Complete Budget Summary</span>
+    <span class="race-info">Fast / Firm Turf Track — Updated R9 &amp; R10</span>
+  </div>
+  <table class="budget-table">
+    <thead><tr><th>Race</th><th>Event</th><th>Grade</th><th>Win</th><th>Exotics</th><th>Total</th></tr></thead>
+    <tbody>
+      <tr><td>R1-R2</td><td>2yo Maiden Debuts</td><td>—</td><td>$0</td><td>$0</td><td><strong>PASS</strong></td></tr>
+      <tr><td>R3</td><td>MSW 6f Dirt</td><td>—</td><td>$120</td><td>$40</td><td><strong>$160</strong></td></tr>
+      <tr><td>R4</td><td>AOC 1m Turf</td><td>—</td><td>$110</td><td>$40</td><td><strong>$150</strong></td></tr>
+      <tr style="background:rgba(201,168,76,0.08)"><td>R5</td><td>Caress Stakes</td><td>G2</td><td>$300</td><td>$400</td><td><strong>$700</strong></td></tr>
+      <tr><td>R6</td><td>2yo Filly Maiden</td><td>—</td><td>$0</td><td>$0</td><td><strong>PASS</strong></td></tr>
+      <tr><td>R7</td><td>AOC 1m Turf</td><td>—</td><td>$130</td><td>$50</td><td><strong>$180</strong></td></tr>
+      <tr><td>R8</td><td>Allowance 3yo F Turf</td><td>—</td><td colspan="2" style="color:var(--red);font-size:11px;">&#9888; Entries unconfirmed — PASS</td><td><strong style="color:var(--red);">VOID</strong></td></tr>
+      <tr><td>R9</td><td>AOC Turf (Connections Read)</td><td>—</td><td>$100</td><td>$40</td><td><strong>$140</strong></td></tr>
+      <tr style="background:rgba(201,168,76,0.08)"><td>R10</td><td>Bowling Green Stakes (6 runners)</td><td>G2</td><td>$640</td><td>$324</td><td><strong>$964</strong></td></tr>
+      <tr><td>R11</td><td>NY-Bred Turf Maiden</td><td>—</td><td>$80</td><td>$50</td><td><strong>$130</strong></td></tr>
+      <tr class="total-row"><td colspan="2">TOTAL DEPLOYED</td><td></td><td>$1,480</td><td>$944</td><td><strong>$2,424</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="model-note" style="margin:12px;">
+    <strong>Reserve: ~$576</strong> — Hold for live price opportunities. If Soleil Volant drifts further toward 15-1 at post time, add another $100-$200 to the win bet. Phil always kept a reserve for live price adjustments.
+    <br><br>
+    <strong>Best Return Scenario:</strong> Soleil Volant wins the Bowling Green ($6,500 on the $500 win), Desvio 2nd (exacta ~$2,500+), trifecta pays $4,000+ → total return exceeds $13,000 on a $3,000 investment.
+    <br><br>
+    <strong>Key Track Condition Factor:</strong> Fast/firm turf is the unifying theme today. Pressers and stalkers who can track and sustain benefit at every distance. Deep closers (Minaret Station, Fort George in Bowling Green) are structurally disadvantaged.
+  </div>
+</div>
+
+<!-- PITTSBURGH PHIL MAXIMS -->
+<div class="maxims-box">
+  <h3>Pittsburgh Phil's Maxims Applied Today</h3>
+  <ul class="maxim-list">
+    <li><strong>Never bet the underlaid favorite</strong> — Sunna (2-1, -56%), Fort George (9/5, -45%), Minaret Station (2-1, -74%): all PASS on win.</li>
+    <li><strong>The overlay IS the edge</strong> — Soleil Volant (12-1, +3.23), Desvio (12-1, +1.97): both in with appropriate sizing.</li>
+    <li><strong>Trouble last out = coming back better</strong> — Road to Glory, Copper Creek, Distant Galaxy, Desvio all get UP weighting.</li>
+    <li><strong>Optimal conditions unlock career-best</strong> — Italian Soiree at exactly 5.5f turf: undefeated at this condition.</li>
+    <li><strong>Fast/firm track at route = presser's day</strong> — Soleil Volant presses Fort George, pace stays honest; closers can't sweep in time.</li>
+    <li><strong>International invader at short price without US record</strong> — Fort George: skip the win bet regardless of UK ratings.</li>
+    <li><strong>Deep closer ascending unfamiliar distance on firm ground</strong> — Minaret Station at 1-3/8m for the first time: worst possible scenario at 2-1.</li>
+    <li><strong>When form is unavailable, bet the connections</strong> — R9 without PP data: Brown/Franco (Judge Boushay) is the play.</li>
+    <li><strong>Never bet 2yo first-timers without workout signals</strong> — R1, R2, R6: total pass.</li>
+  </ul>
+  <div class="phil-quote">"The public rarely distinguishes between a horse that is good and one that merely looks good at the price." — Pittsburgh Phil</div>
+</div>
 
 </body>
 </html>
