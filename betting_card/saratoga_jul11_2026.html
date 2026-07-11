@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pittsburgh Phil | Saratoga Race Day Card | July 11, 2026</title>
+<style>
+  :root {
+    --bg: #0d1b2a;
+    --card: #162032;
+    --border: #2a3f55;
+    --gold: #c9a84c;
+    --gold2: #e8c96d;
+    --text: #dce8f5;
+    --muted: #8fa8c0;
+    --green: #3dbe7a;
+    --red: #e05c5c;
+    --blue: #4a90d9;
+    --purple: #9b6dcc;
+    --orange: #e0883a;
+    --teal: #3dbebe;
+    --yellow: #d4be30;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --border: #c8d8e8;
+      --gold: #9a6f1e;
+      --gold2: #b8860b;
+      --text: #1a2a3a;
+      --muted: #5a7080;
+      --green: #1e8a50;
+      --red: #c0392b;
+      --blue: #1a6ab0;
+      --purple: #6a3aaa;
+      --orange: #b05820;
+      --teal: #1a8a8a;
+      --yellow: #907810;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; font-size: 14px; padding: 16px; }
+  h1 { color: var(--gold); font-size: 22px; text-align: center; letter-spacing: 2px; text-transform: uppercase; }
+  .subtitle { text-align: center; color: var(--muted); font-size: 12px; margin: 4px 0 20px; letter-spacing: 1px; }
+  .bankroll-header { background: var(--card); border: 2px solid var(--gold); border-radius: 8px; padding: 12px 20px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .bankroll-header .bk-item { text-align: center; }
+  .bankroll-header .bk-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .bankroll-header .bk-val { color: var(--gold); font-size: 20px; font-weight: bold; }
+  .race-section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
+  .race-header { background: linear-gradient(135deg, #1e3050 0%, #152540 100%); padding: 10px 16px; border-bottom: 2px solid var(--gold); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .race-header.graded { background: linear-gradient(135deg, #2a1a00 0%, #1a1000 100%); border-bottom-color: var(--gold); }
+  .race-num { background: var(--gold); color: #0d1b2a; font-weight: bold; font-size: 16px; padding: 2px 10px; border-radius: 4px; }
+  .race-name { color: var(--gold2); font-size: 15px; font-weight: bold; }
+  .race-info { color: var(--muted); font-size: 12px; margin-left: auto; }
+  .grade-badge { background: var(--gold); color: #000; font-size: 11px; font-weight: bold; padding: 2px 6px; border-radius: 3px; }
+  .pace-badge { font-size: 11px; font-weight: bold; padding: 2px 8px; border-radius: 3px; }
+  .pace-HOT { background: #c0392b; color: #fff; }
+  .pace-SLOW { background: #1a6ab0; color: #fff; }
+  .pace-NORMAL { background: #2a7a40; color: #fff; }
+  .pace-CONTESTED { background: #b05820; color: #fff; }
+  .pace-UNKNOWN { background: #5a7080; color: #fff; }
+  .horse-table { width: 100%; border-collapse: collapse; }
+  .horse-table th { background: #0d1b2a; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  .horse-table td { padding: 7px 10px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
+  .horse-table tr:last-child td { border-bottom: none; }
+  .horse-table tr:hover td { background: rgba(255,255,255,0.03); }
+  .horse-table tr.top-pick td { background: rgba(201,168,76,0.08); }
+  .pp-num { color: var(--muted); font-size: 12px; width: 28px; }
+  .horse-name { font-weight: bold; }
+  .jt { color: var(--muted); font-size: 11px; }
+  .ml-odds { color: var(--gold); font-weight: bold; }
+  .score-bar-wrap { width: 80px; }
+  .score-bar-bg { background: var(--border); border-radius: 3px; height: 8px; }
+  .score-bar-fill { background: var(--gold); border-radius: 3px; height: 8px; }
+  .score-val { color: var(--text); font-size: 12px; margin-top: 2px; }
+  .model-pct { color: var(--teal); font-weight: bold; }
+  .edge-pos { color: var(--green); font-weight: bold; }
+  .edge-neg { color: var(--red); }
+  .pace-style { font-size: 11px; font-weight: bold; padding: 1px 5px; border-radius: 2px; }
+  .ps-E { background: #c0392b; color: #fff; }
+  .ps-P { background: #e07820; color: #fff; }
+  .ps-S { background: #1a6ab0; color: #fff; }
+  .ps-C { background: #6a3aaa; color: #fff; }
+  .ps-? { background: #5a7080; color: #fff; }
+  .signal { display: inline-block; font-size: 10px; font-weight: bold; padding: 1px 4px; border-radius: 2px; margin: 1px; }
+  .sig-BOUNCE { background: #e05c5c; color: #fff; }
+  .sig-OVERLAY { background: #1e8a50; color: #fff; }
+  .sig-TROUBLE { background: #e07820; color: #fff; }
+  .sig-SOL { background: #6a3aaa; color: #fff; }
+  .sig-SHARP { background: #1a6ab0; color: #fff; }
+  .bets-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; padding: 12px; }
+  .bet-ticket { border-radius: 6px; padding: 10px 12px; border-left: 4px solid; }
+  .bet-WIN { border-color: var(--green); background: rgba(61,190,122,0.08); }
+  .bet-EX { border-color: var(--blue); background: rgba(74,144,217,0.08); }
+  .bet-TRI { border-color: var(--purple); background: rgba(155,109,204,0.08); }
+  .bet-SF { border-color: #e05c5c; background: rgba(224,92,92,0.08); }
+  .bet-DD { border-color: var(--orange); background: rgba(224,136,58,0.08); }
+  .bet-P3 { border-color: var(--yellow); background: rgba(212,190,48,0.08); }
+  .bet-PASS { border-color: var(--muted); background: rgba(90,112,128,0.06); }
+  .bet-type-label { font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .bet-horses { font-size: 14px; font-weight: bold; color: var(--text); margin: 2px 0; }
+  .bet-detail { font-size: 12px; color: var(--muted); }
+  .bet-amount { font-size: 18px; font-weight: bold; color: var(--gold); }
+  .bet-return { font-size: 11px; color: var(--muted); }
+  .section-header { color: var(--gold); font-size: 13px; font-weight: bold; padding: 8px 12px 4px; text-transform: uppercase; letter-spacing: 1px; border-top: 1px solid var(--border); }
+  .budget-table { width: 100%; border-collapse: collapse; }
+  .budget-table th, .budget-table td { padding: 7px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .budget-table th { background: #0d1b2a; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .budget-table .total-row td { color: var(--gold); font-weight: bold; font-size: 15px; border-top: 2px solid var(--gold); border-bottom: none; }
+  .model-note { background: rgba(201,168,76,0.06); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; margin: 10px 12px; font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .model-note strong { color: var(--gold); }
+  .maxims-box { background: var(--card); border: 1px solid var(--gold); border-radius: 8px; padding: 14px; margin-bottom: 20px; }
+  .maxims-box h3 { color: var(--gold); font-size: 14px; margin-bottom: 8px; }
+  .maxim-list { list-style: none; }
+  .maxim-list li { padding: 3px 0; font-size: 12px; color: var(--muted); }
+  .maxim-list li::before { content: "◆ "; color: var(--gold); }
+  .phil-quote { font-style: italic; color: var(--muted); font-size: 12px; text-align: center; padding: 8px; }
+  .pass-race { opacity: 0.6; font-style: italic; color: var(--muted); font-size: 12px; padding: 10px 16px; }
+  @media print {
+    body { background: white; color: black; font-size: 11px; }
+    .race-section { break-inside: avoid; border: 1px solid #999; }
+    .race-header { background: #eee !important; }
+    .race-header.graded { background: #e8d890 !important; }
+    @page { margin: 0.5in; size: letter; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Pittsburgh Phil Betting Card</h1>
+<div class="subtitle">Saratoga Race Course &nbsp;|&nbsp; Saturday, July 11, 2026 &nbsp;|&nbsp; First Post 12:35 PM ET</div>
+
+<div class="bankroll-header">
+  <div class="bk-item"><div class="bk-label">Total Bankroll</div><div class="bk-val">$3,000</div></div>
+  <div class="bk-item"><div class="bk-label">Graded Stakes</div><div class="bk-val">$2,100</div></div>
+  <div class="bk-item"><div class="bk-label">Non-Stakes</div><div class="bk-val">$900</div></div>
+  <div class="bk-item"><div class="bk-label">Target</div><div class="bk-val">12 Races</div></div>
+  <div class="bk-item"><div class="bk-label">Strategy</div><div class="bk-val" style="font-size:13px;">FULL KELLY</div></div>
+</div>
+
+<!-- See full HTML file in repository -->
+
+</body>
+</html>
