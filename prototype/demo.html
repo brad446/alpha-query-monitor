@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alpha Query Intelligence — Widget Library (Prototype)</title>
+<style>
+  :root { --bg:#f8fafc; --panel:#fff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --accent:#2563eb; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--ink); }
+  header { padding:28px 24px 16px; border-bottom:1px solid var(--line); background:var(--panel); }
+  h1 { margin:0 0 4px; font-size:20px; }
+  .lead { color:var(--muted); font-size:13px; max-width:70ch; }
+  .wrap { max-width:1080px; margin:0 auto; padding:24px; }
+  .controls { display:flex; flex-wrap:wrap; gap:12px; align-items:center; background:var(--panel);
+    border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:24px; }
+  .controls label { font-size:12px; color:var(--muted); display:flex; gap:6px; align-items:center; }
+  .controls input, .controls select { font:13px system-ui; padding:6px 8px; border:1px solid var(--line); border-radius:8px; }
+  .pill { font-size:11px; padding:3px 8px; border-radius:999px; background:#eef2ff; color:#3730a3; }
+  h2 { font-size:14px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin:28px 0 12px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
+  .brandbar { display:flex; gap:8px; align-items:center; margin:6px 0 10px; font-size:12px; color:var(--muted); }
+  .swatch { width:14px; height:14px; border-radius:4px; border:1px solid rgba(0,0,0,.1); }
+  code, pre { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .gen { background:#0b1120; color:#e2e8f0; border-radius:12px; padding:16px; overflow:auto; font-size:12px; line-height:1.5; }
+  .gen .tag { color:#7dd3fc; } .gen .attr { color:#fbbf24; } .gen .val { color:#86efac; }
+  .note { font-size:12px; color:var(--muted); margin-top:6px; }
+  footer { color:var(--muted); font-size:12px; padding:24px; text-align:center; border-top:1px solid var(--line); margin-top:32px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap" style="padding-bottom:0">
+    <h1>Alpha Query Intelligence — Widget Library <span class="pill">prototype</span></h1>
+    <p class="lead">Embeddable, white-label volatility &amp; options widgets. The same components below can be
+    dropped into any customer portal with one line of HTML. This page is a host site embedding them.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="controls">
+    <label>Ticker <input id="ticker" value="AAPL" size="6" maxlength="6"></label>
+    <label>Data source
+      <select id="source">
+        <option value="mock">Bundled sample data (offline)</option>
+        <option value="api">Live API — demo-key-pro</option>
+        <option value="basic">Live API — demo-key-basic (no history tier)</option>
+      </select>
+    </label>
+    <label>API base <input id="endpoint" value="http://localhost:8787/v1" size="24"></label>
+    <span class="note" id="srcnote"></span>
+  </div>
+
+  <h2>Catalog — mix &amp; match</h2>
+  <div class="grid" id="catalog">
+    <div><aq-iv-term-structure ticker="AAPL"></aq-iv-term-structure></div>
+    <div><aq-iv-history ticker="AAPL"></aq-iv-history></div>
+    <div><aq-pcr-gauge ticker="AAPL"></aq-pcr-gauge></div>
+  </div>
+
+  <h2>Same widget, two customer brands</h2>
+  <p class="note">One component, per-instance theming tokens — no forks, no rebuild.</p>
+  <div class="grid">
+    <div>
+      <div class="brandbar"><span class="swatch" style="background:#7c3aed"></span> Vertex Wealth · violet · rounded</div>
+      <aq-iv-term-structure ticker="AAPL" accent="#7c3aed" radius="18px"></aq-iv-term-structure>
+    </div>
+    <div>
+      <div class="brandbar"><span class="swatch" style="background:#f59e0b"></span> Acme Brokerage · dark · amber</div>
+      <aq-iv-term-structure ticker="AAPL" theme="dark" accent="#f59e0b" radius="6px"></aq-iv-term-structure>
+    </div>
+  </div>
+
+  <h2>Embed-code generator</h2>
+  <div class="gen" id="embed"></div>
+  <p class="note">Customers copy this snippet. The <code>endpoint</code> + <code>api-key</code> attributes bind it to their entitled AlphaQuery account.</p>
+</div>
+
+<footer>Alpha Query Intelligence · prototype · charts &amp; data are illustrative mock values</footer>
+
+<script src="./widgets/aq-widgets.js"></script>
+<script>
+  var tickerEl = document.getElementById('ticker');
+  var sourceEl = document.getElementById('source');
+  var endpointEl = document.getElementById('endpoint');
+  var srcNote = document.getElementById('srcnote');
+
+  var KEYS = { api: 'demo-key-pro', basic: 'demo-key-basic' };
+
+  function apply() {
+    var ticker = (tickerEl.value || 'AAPL').toUpperCase();
+    var mode = sourceEl.value;
+    var endpoint = mode === 'mock' ? '' : endpointEl.value;
+    var key = KEYS[mode] || '';
+    endpointEl.disabled = (mode === 'mock');
+    srcNote.textContent = mode === 'mock'
+      ? 'No network — widgets render bundled sample data.'
+      : 'Start the server first:  node prototype/server/mock-api.js';
+
+    document.querySelectorAll('aq-iv-term-structure, aq-iv-history, aq-pcr-gauge').forEach(function (el) {
+      el.setAttribute('ticker', ticker);
+      if (endpoint) { el.setAttribute('endpoint', endpoint); el.setAttribute('api-key', key); }
+      else { el.removeAttribute('endpoint'); el.removeAttribute('api-key'); }
+    });
+    renderEmbed(ticker, endpoint, key);
+  }
+
+  function renderEmbed(ticker, endpoint, key) {
+    var attrs = 'ticker="<span class="val">' + ticker + '</span>"';
+    if (endpoint) attrs += '\n    <span class="attr">endpoint</span>="<span class="val">' + endpoint + '</span>"' +
+                           '\n    <span class="attr">api-key</span>="<span class="val">' + key + '</span>"';
+    attrs += '\n    <span class="attr">accent</span>="<span class="val">#7c3aed</span>"';
+    document.getElementById('embed').innerHTML =
+      '&lt;<span class="tag">script</span> <span class="attr">src</span>="<span class="val">https://cdn.alphaquery.com/widgets/v1/aq-widgets.js</span>"&gt;&lt;/<span class="tag">script</span>&gt;\n\n' +
+      '&lt;<span class="tag">aq-iv-term-structure</span>\n    ' + attrs + '&gt;&lt;/<span class="tag">aq-iv-term-structure</span>&gt;';
+  }
+
+  tickerEl.addEventListener('input', apply);
+  sourceEl.addEventListener('change', apply);
+  endpointEl.addEventListener('input', apply);
+  apply();
+</script>
+</body>
+</html>
